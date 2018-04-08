@@ -1,7 +1,15 @@
 #!/bin/bash
 
-tail -n 600000 data | sort -n -t ' ' -k 1 | sort -n -t ' ' -k 2  > data_part2
-head -n 100001 data > data_part1
-cat data_part1 data_part2 > data
+python generate_data.py $1 $2 $3
+tail -n $2 $3 | sort -k2n -k1n > temp
+uniq temp > part2
+count=$(wc -l part2 | cut -f 1 -d " ")
 
-# rm -f data_part1 data_part2
+head -n $(($1+1)) $3 > temp
+numnodes=$(head -n 1 temp | cut -f 1 -d " ")
+echo "$numnodes $count" > part1.1
+tail -n $1 temp > part1.2
+
+cat part1.1 part1.2 part2 > $3
+
+rm -f part1.1 part1.2 part2 temp
