@@ -1,14 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
-#include <assert.h>
 #include <string>
 #include <fstream>
-
-#include "Utilities.cuh"
-
-#include <cuda_runtime.h>
-#include <cusparse_v2.h>
 
 using namespace std;
 
