@@ -74,7 +74,7 @@ int main()
     const double beta  = 0.;
     cusparseSafeCall(cusparseDcsrmv(handle, CUSPARSE_OPERATION_TRANSPOSE, N, N, nnzA, &alpha, descrA, d_A, col_ind, row_ind, d_x_dense, 
                                     &beta, d_y_dense));
-	cudaDeviceSynchronize();                                 
+	cudaDeviceSynchronize();
 	cout << "I am here" << endl;
     gpuErrchk(cudaMemcpy(h_y_dense,           d_y_dense,            N * sizeof(double), cudaMemcpyDeviceToHost));
 
