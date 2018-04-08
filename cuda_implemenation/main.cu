@@ -92,6 +92,7 @@ int main(int argc, char** argv)
     filename = ParseArguments(argc, argv);
 
     Matrix mat(filename);
+	mat.print();
     Matrix d_mat = mat.CopyToDevice();
     
     double* d_x = RandomInit(d_mat.n);
