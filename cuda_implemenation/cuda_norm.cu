@@ -27,7 +27,7 @@ int norm(vector<double> x)
 
 
 
-int main(){
+void norm_test(){
 	vector<double>x(7,300);	
 	cout<<norm(x)<<endl;
 }

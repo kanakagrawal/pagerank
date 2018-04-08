@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 #include "device_functions.h"
+#include "types.cuh"
+#include "Utilities.cuh"
 
 const int BLOCK_SIZE =32;
 

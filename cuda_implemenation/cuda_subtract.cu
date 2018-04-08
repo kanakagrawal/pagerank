@@ -37,7 +37,7 @@ vector<double> subtract(vector<double> x,vector<double> y)
 
 
 
-int main(){
+void sub_test(){
 	vector<double>x(7,300);	
 	vector<double>y(7,200);
 	cout<<subtract(x,y)[6]<<endl;

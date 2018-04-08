@@ -75,7 +75,7 @@ vector<double> MatrixMul(Matrix *mat, vector<double> x)
 }
 
 // testing matmul
-int test () {
+void mul_test () {
     string filename("data.dat");
     Matrix mat (filename);
     
