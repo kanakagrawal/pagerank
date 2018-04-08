@@ -13,19 +13,15 @@ using namespace std;
 #include "types.cuh"
 #include <vector>
 
-int norm(vector<double> x)
+int norm(double* d_x, int n)
 {
 	cublasHandle_t handle;
 	cublasSafeCall(cublasCreate(&handle));
-	
-	double *d_x; gpuErrchk(cudaMalloc(&d_x, x.size() * sizeof(*d_x)));
-	gpuErrchk(cudaMemcpy(d_x, x.data(), x.size() * sizeof(*d_x), cudaMemcpyHostToDevice));			
 	double answer;
-	cublasSafeCall(cublasDasum(handle, x.size(),d_x,1,&answer));
+	cublasSafeCall(cublasDasum(handle, n, d_x, 1, &answer));
+	gpuErrchk(cudaDeviceSynchronize());	
 	return answer;
 }
-
-
 
 void norm_test(){
 	vector<double>x(7,300);	
