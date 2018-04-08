@@ -92,11 +92,27 @@ int main(int argc, char** argv)
     filename = ParseArguments(argc, argv);
 
     Matrix mat(filename);
-	mat.print();
+	// mat.print();
     Matrix d_mat = mat.CopyToDevice();
     
     double* d_x = RandomInit(d_mat.n);
     
+    Matrix temp = d_mat.CopyToHost();
+    cout << temp.n << " - " << temp.nnz << endl; 
+    cout << mat.n << " - " << mat.nnz << endl; 
+
+    cout << "# Start 10 Elems" << endl;
+    for (int i = 0; i < 10; i++){
+        cout << temp.p[i] << " " << temp.row_ind[i] << " " << temp.col_ind[i] << endl; 
+        cout << mat.p[i] << " " << mat.row_ind[i] << " " << mat.col_ind[i] << endl; 
+    }
+        
+    cout << "# End 10 Elems" << endl;
+    for (int i = 0; i < 10; i++){
+        cout << temp.p[temp.nnz - i] << " " << temp.row_ind[temp.nnz - i] << " " << temp.col_ind[temp.n - i] << endl; 
+        cout << mat.p[temp.nnz - i] << " " << mat.row_ind[temp.nnz - i] << " " << mat.col_ind[temp.n - i] << endl; 
+    }
+
     d_x = RunGPUPowerMethod(d_mat, d_x);
     
     double *x = new double[d_mat.n];

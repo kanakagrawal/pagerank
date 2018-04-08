@@ -40,6 +40,8 @@ void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int*
 //		curRow--;
 		if (curRow != prevRow)
 		{
+			for (int j = prevRow + 1; j < curRow; j++)
+				(*col_ind)[j] = curLengthCumulative;
 			(*col_ind)[prevRow] = curLengthCumulative;	
 			prevRow = curRow;
 		}
