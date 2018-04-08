@@ -10,13 +10,12 @@
 #include <cuda_runtime.h>
 #include <cusparse_v2.h>
 using namespace std;
+#include "types.cuh"
+#include <vector>
 
 void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int* nnz, int * n);
 
-/********/
-/* MAIN */
-/********/
-int main()
+int MatrixMul(Matrix mat, vector<int> x, vector<int> *y)
 {
     // --- Initialize cuSPARSE
     cusparseHandle_t handle;    cusparseSafeCall(cusparseCreate(&handle));
