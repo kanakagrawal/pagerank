@@ -13,26 +13,15 @@ using namespace std;
 #include "types.cuh"
 #include <vector>
 
-vector<double> subtract(vector<double> x,vector<double> y)
+double* subtract(double* d_x,double* d_y, int n)
 {
-	if (x.size() != y.size()){
-		cout<<"Size mismatch for array substraction"<<endl;
-		exit(1);
-	}
 
 	cublasHandle_t handle;
 	cublasSafeCall(cublasCreate(&handle));
 	const double alpha = -1.0;
-
-	double *d_x; gpuErrchk(cudaMalloc(&d_x, x.size() * sizeof(*d_x)));
-	double *d_y; gpuErrchk(cudaMalloc(&d_y, y.size() * sizeof(*d_y)));
-	gpuErrchk(cudaMemcpy(d_x, x.data(), x.size() * sizeof(*d_x), cudaMemcpyHostToDevice));
-	gpuErrchk(cudaMemcpy(d_y, y.data(), y.size() * sizeof(*d_y), cudaMemcpyHostToDevice));
-
-	cublasSafeCall(cublasDaxpy(handle, x.size(),&alpha, d_y,1,d_x,1));
+	cublasSafeCall(cublasDaxpy(handle, n,&alpha, d_y,1,d_x,1));
 	gpuErrchk(cudaDeviceSynchronize());
-	gpuErrchk(cudaMemcpy(x.data(),d_x, x.size() * sizeof(*d_x), cudaMemcpyDeviceToHost));
-	return x;
+	return d_x;
 }
 
 
