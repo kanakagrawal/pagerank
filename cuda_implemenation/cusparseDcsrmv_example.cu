@@ -38,8 +38,6 @@ int main()
 
     int nnzA = nnz;                           // --- Number of nonzero elements in dense matrix A
 
-    const int lda = N;                      // --- Leading dimension of dense matrix
-
     printf("Number of nonzero elements in dense matrix A = %i\n\n", nnzA);
     for (int i = 0; i < N; ++i) printf("Number of nonzero elements in row %i for matrix = %i \n", i, nnzPerVectorA[i]);
     printf("\n");
@@ -72,11 +70,11 @@ int main()
 
     const double alpha = 1.;
     const double beta  = 0.;
-    cusparseSafeCall(cusparseDcsrmv(handle, CUSPARSE_OPERATION_TRANSPOSE, N, N, nnzA, &alpha, descrA, d_A, col_ind, row_ind, d_x_dense, 
+    cusparseSafeCall(cusparseDcsrmv(handle, CUSPARSE_OPERATION_TRANSPOSE, N, N, nnzA, &alpha, descrA, d_A, row_ind, col_ind, d_x_dense, 
                                     &beta, d_y_dense));
-	cudaDeviceSynchronize();                                 
+	gpuErrchk(cudaDeviceSynchronize()); 
 	cout << "I am here" << endl;
-    gpuErrchk(cudaMemcpy(h_y_dense,           d_y_dense,            N * sizeof(double), cudaMemcpyDeviceToHost));
+//    gpuErrchk(cudaMemcpy(h_y_dense,           d_y_dense,            N * sizeof(double), cudaMemcpyDeviceToHost));
 
     printf("\nResult vector\n\n");
     for (int i = 0; i < N; ++i) printf("h_y[%i] = %f ", i, h_y_dense[i]); printf("\n");
