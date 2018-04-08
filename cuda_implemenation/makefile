@@ -1,5 +1,5 @@
 out: cuda_matmul.o Utilities.o read.o types.o
-	nvcc -o out cuda_matmul.o Utilities.o read.o -lcublas -lcusparse
+	nvcc -o out cuda_matmul.o Utilities.o read.o types.o -lcublas -lcusparse
 
 cuda_matmul.o: cuda_matmul.cu types.o
 	nvcc cuda_matmul.cu -c cuda_matmul.o types.o -lcusparse -lcublas
