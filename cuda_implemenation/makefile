@@ -13,7 +13,10 @@ read.o: read.cu
 types.o: types.cu types.cuh
 	nvcc types.cu -c types.o
 
-pagerank: main.cu
+test_norm : 
+	nvcc cuda_norm.cu Utilities.cu -lcusparse -lcublas
+
+pagerank: main.cu Utilities.o
 	nvcc main.cu -o pagerank
 
 debug: main.cu
