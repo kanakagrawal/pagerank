@@ -1,4 +1,3 @@
-from igraph import *
 from random import randint
 import sys
 
@@ -11,12 +10,12 @@ filename = sys.argv[3]
 
 with open(filename,"w") as f:
 	f.write("%s %s\n"%(V,E))
-	for i in range(V):
+	for i in range(1, V + 1):
 		if i %100000 == 0 :
-			print i
+			print (i)
 		f.write("%s %s\n"%(i,"link"+str(i)))
 	for i in range(E):
 		if i %100000 == 0 :
-			print i
-		x,y = randint(0,V-1),randint(0,V-1)
+			print (i)
+		x,y = randint(1,V),randint(1,V)
 		f.write("%s %s\n"%(x,y))

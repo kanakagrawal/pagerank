@@ -51,7 +51,8 @@ double* RunGPUPowerMethod(Matrix P, double* x_new)
     double* temp;
     double x_norm;
     gpuErrchk(cudaMalloc(&x_new, P.n * sizeof(double)));
-	//power loop
+    //power loop
+    cout << "Checkpoint" << endl;
 	while(abs(lambda - oldLambda) > EPS)
 	{
 		oldLambda = lambda;
@@ -71,10 +72,10 @@ double* RunGPUPowerMethod(Matrix P, double* x_new)
 
 double* RandomInit(int n) {
     double *x = new double[n];
-    cout << "random init: " << endl;
+    // cout << "random init: " << endl;
     for (int i = 0; i < n; i++) {
         x[i] = (rand() % 100) / 100.0; 
-        cout << x[i] << " ";
+        // cout << x[i] << " ";
     }
     cout << endl;
     double *d_x;
@@ -91,18 +92,14 @@ int main(int argc, char** argv)
     filename = ParseArguments(argc, argv);
 
     Matrix mat(filename);
-    mat.print();
     Matrix d_mat = mat.CopyToDevice();
-    d_mat.print();
     
     double* d_x = RandomInit(d_mat.n);
-
+    
     d_x = RunGPUPowerMethod(d_mat, d_x);
     
     double *x = new double[d_mat.n];
     gpuErrchk(cudaMemcpy(x, d_x, d_mat.n * sizeof(double), cudaMemcpyDeviceToHost));
-    gpuErrchk(cudaDeviceSynchronize());
-    cout << "Adfa" << endl;
     double max_val = x[0];
     int max_pos = 0; 
 
@@ -110,7 +107,7 @@ int main(int argc, char** argv)
     
     for(int i = 0; i < d_mat.n; i++)
     {
-        cout << x[i] << " ";
+        // cout << x[i] << " ";
         if(max_val < x[i]) {
             max_pos = i;
             max_val = x[i];
