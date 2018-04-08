@@ -25,6 +25,8 @@ int norm(vector<double> x)
 	return answer;
 }
 
+
+
 int main(){
 	vector<double>x(7,300);	
 	cout<<norm(x)<<endl;

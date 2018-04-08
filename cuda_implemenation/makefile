@@ -16,6 +16,9 @@ types.o: types.cu types.cuh
 test_norm : 
 	nvcc cuda_norm.cu Utilities.cu -lcusparse -lcublas
 
+test_sub : 
+	nvcc cuda_subtract.cu Utilities.cu -lcusparse -lcublas
+
 pagerank: main.cu Utilities.o
 	nvcc main.cu -o pagerank
 
