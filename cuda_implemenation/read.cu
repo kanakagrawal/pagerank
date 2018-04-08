@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int* nnz, int * n, int** nnzPerVectorA)
+void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int* nnz, int * n)
 {
 	fstream f(filename.c_str());
 	int v, e;
@@ -21,7 +21,6 @@ void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int*
 	
 	*row_ind = new int[e];
 	*col_ind = new int[v + 1];
-	*nnzPerVectorA = new int[v];
 	
 	for(int i = 0; i < v + 1; i++)
 	{
@@ -32,7 +31,6 @@ void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int*
 	*P_sparse = new double[e];
 	
 	int curLengthCumulative = 0;
-	int curLength = 0;
 	int curRow, prevRow = 0;
 	for(int i = 0; i < *nnz; i++)
 	{
@@ -43,16 +41,12 @@ void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int*
 		if (curRow != prevRow)
 		{
 			(*col_ind)[prevRow] = curLengthCumulative;	
-			(*nnzPerVectorA)[prevRow - 1] = curLength;
-			curLength = 0;
 			prevRow = curRow;
 		}
-		curLength++;
 		curLengthCumulative++;
 		(*P_sparse)[i] = 1.0;
 	}
 	(*col_ind)[curRow] = curLengthCumulative;
-	(*nnzPerVectorA)[prevRow - 1] = curLength;
 }
 /*
 int main()

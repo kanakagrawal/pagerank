@@ -11,7 +11,7 @@
 #include <cusparse_v2.h>
 using namespace std;
 
-void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int* nnz, int * n, int** nnzPerVectorA);
+void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int* nnz, int * n);
 
 /********/
 /* MAIN */
@@ -25,10 +25,10 @@ int main()
     /* SETTING UP THE PROBLEM */
     /**************************/
     string filename = "data.dat";
-	int *row_ind, *col_ind, *nnzPerVectorA;
+	int *row_ind, *col_ind;
 	double* P_sparse;
 	int nnz, n;
-	read(filename, &P_sparse, &row_ind, &col_ind, &nnz, &n, &nnzPerVectorA);
+	read(filename, &P_sparse, &row_ind, &col_ind, &nnz, &n);
     const int N     = n;                // --- Number of rows and columns
 
     // --- Descriptor for sparse matrix A
@@ -37,10 +37,6 @@ int main()
     cusparseSafeCall(cusparseSetMatIndexBase(descrA, CUSPARSE_INDEX_BASE_ZERO));  
 
     int nnzA = nnz;                           // --- Number of nonzero elements in dense matrix A
-
-    printf("Number of nonzero elements in dense matrix A = %i\n\n", nnzA);
-    for (int i = 0; i < N; ++i) printf("Number of nonzero elements in row %i for matrix = %i \n", i, nnzPerVectorA[i]);
-    printf("\n");
 
     printf("\nOriginal matrix A in CSR format\n\n");
     for (int i = 0; i < nnzA; ++i) printf("A[%i] = %f ", i, P_sparse[i]); printf("\n");
@@ -64,17 +60,22 @@ int main()
 	gpuErrchk(cudaMemcpy(d_x_dense, h_x_dense, N     * sizeof(double), cudaMemcpyHostToDevice));
 	gpuErrchk(cudaMemcpy(d_y_dense, h_y_dense, N * sizeof(double), cudaMemcpyHostToDevice));
 	gpuErrchk(cudaMemcpy(d_A, P_sparse, nnzA * sizeof(*P_sparse), cudaMemcpyHostToDevice));
-	
+    
+	int *d_row_ind; gpuErrchk(cudaMalloc(&d_row_ind, nnzA * sizeof(*d_row_ind)));
+	int *d_col_ind; gpuErrchk(cudaMalloc(&d_col_ind, (N + 1) * sizeof(*d_col_ind)));
+	gpuErrchk(cudaMemcpy(d_row_ind, row_ind, nnzA * sizeof(*d_row_ind), cudaMemcpyHostToDevice));
+	gpuErrchk(cudaMemcpy(d_col_ind, col_ind, (N + 1) * sizeof(*d_col_ind), cudaMemcpyHostToDevice));
+    
+
     printf("\n");
     for (int i = 0; i < N; ++i) printf("h_x[%i] = %f \n", i, h_x_dense[i]); printf("\n");
 
     const double alpha = 1.;
     const double beta  = 0.;
-    cusparseSafeCall(cusparseDcsrmv(handle, CUSPARSE_OPERATION_TRANSPOSE, N, N, nnzA, &alpha, descrA, d_A, row_ind, col_ind, d_x_dense, 
+    cusparseSafeCall(cusparseDcsrmv(handle, CUSPARSE_OPERATION_TRANSPOSE, N, N, nnzA, &alpha, descrA, d_A, d_col_ind, d_row_ind, d_x_dense, 
                                     &beta, d_y_dense));
 	gpuErrchk(cudaDeviceSynchronize()); 
-	cout << "I am here" << endl;
-//    gpuErrchk(cudaMemcpy(h_y_dense,           d_y_dense,            N * sizeof(double), cudaMemcpyDeviceToHost));
+    gpuErrchk(cudaMemcpy(h_y_dense,           d_y_dense,            N * sizeof(double), cudaMemcpyDeviceToHost));
 
     printf("\nResult vector\n\n");
     for (int i = 0; i < N; ++i) printf("h_y[%i] = %f ", i, h_y_dense[i]); printf("\n");
