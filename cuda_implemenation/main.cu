@@ -3,6 +3,7 @@
 #include "device_functions.h"
 #include "types.cuh"
 #include "Utilities.cuh"
+#include <string>
 
 const int BLOCK_SIZE =32;
 
@@ -34,6 +35,7 @@ unsigned int timer_Av = 0;
 unsigned int timer_Norm = 0;
 unsigned int timer_Lamda=0;
 
+double alpha = 0.8;
 
 // Functions
 void Cleanup(void);
@@ -42,6 +44,9 @@ void UploadArray(float*, int);
 void PrintArray(float*, int);
 float CPUReduce(float*, int);
 void ParseArguments(int, char**);
+
+// returns alpha * mat * x
+double* MatrixMul(double alpha, Matrix *mat, double* x);
 
 void CPU_AvProduct()
 {
@@ -110,6 +115,36 @@ void RunCPUPowerMethod()
 	
 }
 
+void SetupGPU() {
+
+}
+
+void RunGPUPowerMethod(Matrix P)
+{
+	printf("*************************************\n");
+	float oldLamda =0;
+	float lamda=0;
+	
+	//AvProduct
+    // CPU_AvProduct();
+    // MatM
+	
+	//power loop
+	for (int i=0;i<100;i++)
+	{
+		CPU_NormalizeW();
+		CPU_AvProduct();
+		lamda= CPU_ComputeLamda();
+		printf("CPU lamda at %d: %f \n", i, lamda);
+		// If residual is lass than epsilon break
+		if(abs(oldLamda - lamda) < EPS)
+			break;
+		oldLamda = lamda;	
+	
+	}
+	printf("*************************************\n");
+	
+}
 
 int main(int argc, char** argv)
 {
@@ -137,13 +172,20 @@ int main(int argc, char** argv)
     if (h_VecW == 0) 
       Cleanup();
 
-   h_NormW = (float*)malloc(norm_size);
+    h_NormW = (float*)malloc(norm_size);
 
     // Initialize input matrix
     UploadArray(h_MatA, N);
     InitOne(h_VecV,N);
-	
+
     RunCPUPowerMethod();
+
+    std::string filename("data.dat");
+    
+    Matrix mat(filename);
+    Matrix d_mat = mat.CopyToDevice();
+
+    RunGPUPowerMethod( d_mat );
 }
 
 void Cleanup(void)

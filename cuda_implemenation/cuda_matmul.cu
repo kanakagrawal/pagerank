@@ -15,8 +15,8 @@ using namespace std;
 
 void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int* nnz, int * n);
 
-// returns mat * x
-vector<double> MatrixMul(Matrix *mat, vector<double> x)
+// returns alpha * mat * x
+double* MatrixMul(double alpha, Matrix *mat, double* d_x_dense, double *d_y_dense)
 {
     // --- Initialize cuSPARSE
     cusparseHandle_t handle;    cusparseSafeCall(cusparseCreate(&handle));
@@ -46,11 +46,6 @@ vector<double> MatrixMul(Matrix *mat, vector<double> x)
 	{
         h_y_dense[k] = 0.;
     }
-    
-    double *d_x_dense; gpuErrchk(cudaMalloc(&d_x_dense, N * sizeof(double)));
-    double *d_y_dense; gpuErrchk(cudaMalloc(&d_y_dense, N * sizeof(double)));
-    
-	gpuErrchk(cudaMemcpy(d_x_dense, x.data(), N * sizeof(double), cudaMemcpyHostToDevice));
 	gpuErrchk(cudaMemcpy(d_y_dense, h_y_dense, N * sizeof(double), cudaMemcpyHostToDevice));
     
     Matrix d_mat = mat->CopyToDevice();
@@ -60,18 +55,17 @@ vector<double> MatrixMul(Matrix *mat, vector<double> x)
     for (int i = 0; i < N; ++i) printf("h_x[%i] = %f \n", i, x.data()[i]); printf("\n");
 #endif
     
-    const double alpha = 1.;
     const double beta  = 0.;
     cusparseSafeCall(cusparseDcsrmv(handle, CUSPARSE_OPERATION_TRANSPOSE, N, N, nnzA, &alpha, descrA, d_mat.p, d_mat.col_ind, d_mat.row_ind, d_x_dense, 
                                     &beta, d_y_dense));
 	gpuErrchk(cudaDeviceSynchronize()); 
-    gpuErrchk(cudaMemcpy(h_y_dense, d_y_dense, N * sizeof(double), cudaMemcpyDeviceToHost));
-
+    
 #ifdef DEBUG
+    gpuErrchk(cudaMemcpy(h_y_dense, d_y_dense, N * sizeof(double), cudaMemcpyDeviceToHost));
     printf("\nResult vector\n\n");
     for (int i = 0; i < N; ++i) printf("h_y[%i] = %f ", i, h_y_dense[i]); printf("\n");
 #endif
-    return vector<double>(h_y_dense, h_y_dense + N);
+    return d_y_dense;
 }
 
 // testing matmul
@@ -79,9 +73,9 @@ void mul_test () {
     string filename("data.dat");
     Matrix mat (filename);
     
-    vector<double> x = {1.0, 1.0, 1.0, 1.0};
-    vector<double> y (MatrixMul(&mat, x));
+    // vector<double> x = {1.0, 1.0, 1.0, 1.0};
+    // vector<double> y (MatrixMul(1.0, &mat, x));
 
-    for (int i = 0; i < y.size(); i++)
-        cout << y[i] << endl;
+    // for (int i = 0; i < y.size(); i++)
+        // cout << y[i] << endl;
 }
