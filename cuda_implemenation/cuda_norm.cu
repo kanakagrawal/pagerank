@@ -13,7 +13,7 @@ using namespace std;
 #include "types.cuh"
 #include <vector>
 
-int norm(double* d_x, int n)
+double norm(double* d_x, int n)
 {
 	cublasHandle_t handle;
 	cublasSafeCall(cublasCreate(&handle));
@@ -23,7 +23,3 @@ int norm(double* d_x, int n)
 	return answer;
 }
 
-void norm_test(){
-	vector<double>x(7,300);	
-	cout<<norm(x)<<endl;
-}

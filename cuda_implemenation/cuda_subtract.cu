@@ -25,9 +25,10 @@ double* subtract(double* d_x,double* d_y, int n)
 }
 
 
-
+/*
 void sub_test(){
 	vector<double>x(7,300);	
 	vector<double>y(7,200);
 	cout<<subtract(x,y)[6]<<endl;
 }
+*/

@@ -4,67 +4,20 @@
 #include "types.cuh"
 #include "Utilities.cuh"
 #include <string>
+#include <float.h>
+#include <iostream>
 
-const int BLOCK_SIZE =32;
-
-
-// Input Array Variables
-float* h_MatA = NULL;
-float* d_MatA = NULL;
-
-// Output Array
-float* h_VecV = NULL;
-float* d_VecV = NULL;
-float* h_VecW = NULL;
-float* d_VecW = NULL;
-float* h_NormW = NULL;
-float* d_NormW = NULL;
+using namespace std;
 
 // Variables to change
-int GlobalSize = 50000;
-int BlockSize = 32;
 const float EPS = 0.000001;
-
-// create and start timer as unsigned integer
-unsigned int timer_mem = 0;
-unsigned int timer_total = 0;
-unsigned int timer_GPU = 0;
-unsigned int timer_CPU=0;
-
-unsigned int timer_Av = 0;
-unsigned int timer_Norm = 0;
-unsigned int timer_Lamda=0;
-
 double alpha = 0.8;
 
-// Functions
-void Cleanup(void);
-void InitOne(float*, int);
-void UploadArray(float*, int);
-void PrintArray(float*, int);
-float CPUReduce(float*, int);
-void ParseArguments(int, char**);
+void MatrixMul(double alpha, Matrix *mat, double* x, double* x_new); // returns alpha * mat * x
+double* subtract(double* d_x,double* d_y, int n);
+double norm(double* d_x, int n);
 
-// returns alpha * mat * x
-double* MatrixMul(double alpha, Matrix *mat, double* x);
-
-void CPU_AvProduct()
-{
-	int N = GlobalSize;
-	int matIndex =0;
-    for(int i=0;i<N;i++)
-	{
-		h_VecW[i] = 0;
-		for(int j=0;j<N;j++)
-		{
-			matIndex = i*N + j;
-			h_VecW[i] += h_MatA[matIndex] * h_VecV[j];
-			
-		}
-	}
-}
-
-
+/*
 void CPU_NormalizeW()
 {
 	int N = GlobalSize;
@@ -76,181 +29,53 @@ void CPU_NormalizeW()
 	for(int i=0;i<N;i++)
 		h_VecV[i] = h_VecW[i]/normW;
 }
+*/
 
-float CPU_ComputeLamda()
-{
-	int N = GlobalSize;
-	float lamda =0;
-	for(int i=0;i<N;i++)
-		lamda += h_VecV[i] * h_VecW[i];
-	
-	return lamda;
-}
-
-
-
-void RunCPUPowerMethod()
+void RunGPUPowerMethod(Matrix P, double* x_new)
 {
 	printf("*************************************\n");
-	float oldLamda =0;
-	float lamda=0;
-	
-	//AvProduct
-	CPU_AvProduct();
-	
+	double oldLambda = DBL_MAX;
+	double lambda = 0;
+	double alpha = 0.8;
+
+	double* x = new double[P.n];
+    gpuErrchk(cudaMalloc(&x, P.n * sizeof(double)));
 	//power loop
-	for (int i=0;i<100;i++)
+	while(abs(lambda - oldLambda) > EPS)
 	{
-		CPU_NormalizeW();
-		CPU_AvProduct();
-		lamda= CPU_ComputeLamda();
-		printf("CPU lamda at %d: %f \n", i, lamda);
-		// If residual is lass than epsilon break
-		if(abs(oldLamda - lamda) < EPS)
-			break;
-		oldLamda = lamda;	
-	
+		MatrixMul(alpha, &P, x, x_new);
+		double* temp = new double[P.n];
+		temp = subtract(x, x_new, P.n);
+		lambda = norm(temp, P.n);
+		printf("CPU lamda: %f \n", lambda);
+		oldLambda = lambda;	
+		x = x_new;
+		x_new = temp;
 	}
 	printf("*************************************\n");
-	
-}
-
-void SetupGPU() {
-
-}
-
-void RunGPUPowerMethod(Matrix P)
-{
-	printf("*************************************\n");
-	float oldLamda =0;
-	float lamda=0;
-	
-	//AvProduct
-    // CPU_AvProduct();
-    // MatM
-	
-	//power loop
-	for (int i=0;i<100;i++)
-	{
-		CPU_NormalizeW();
-		CPU_AvProduct();
-		lamda= CPU_ComputeLamda();
-		printf("CPU lamda at %d: %f \n", i, lamda);
-		// If residual is lass than epsilon break
-		if(abs(oldLamda - lamda) < EPS)
-			break;
-		oldLamda = lamda;	
-	
-	}
-	printf("*************************************\n");
-	
+//	return x_new;
 }
 
 int main(int argc, char** argv)
 {
-    ParseArguments(argc, argv);
-		
-    int N = GlobalSize;
-    printf("Matrix size %d X %d \n", N, N);
-    size_t vec_size = N * sizeof(float);
-    size_t mat_size = N * N * sizeof(float);
-    size_t norm_size = sizeof(float);
-    //float CPU_result = 0.0, GPU_result = 0.0;
-
-    // Allocate input matrix in host memory
-    h_MatA = (float*)malloc(mat_size);
-    if (h_MatA == 0) 
-      Cleanup();
-
-    // Allocate initial vector V in host memory
-    h_VecV = (float*)malloc(vec_size);
-    if (h_VecV == 0) 
-      Cleanup();
-
-    // Allocate W vector for computations
-    h_VecW = (float*)malloc(vec_size);
-    if (h_VecW == 0) 
-      Cleanup();
-
-    h_NormW = (float*)malloc(norm_size);
-
-    // Initialize input matrix
-    UploadArray(h_MatA, N);
-    InitOne(h_VecV,N);
-
-    RunCPUPowerMethod();
-
     std::string filename("data.dat");
-    
     Matrix mat(filename);
     Matrix d_mat = mat.CopyToDevice();
-
-    RunGPUPowerMethod( d_mat );
-}
-
-void Cleanup(void)
-{
-    // Free device memory
-    if (d_MatA)
-        cudaFree(d_MatA);
-    if (d_VecV)
-        cudaFree(d_VecV);
-    if (d_VecW)
-        cudaFree(d_VecW);
-	if (d_NormW)
-		cudaFree(d_NormW);
-		
-    // Free host memory
-    if (h_MatA)
-        free(h_MatA);
-    if (h_VecV)
-        free(h_VecV);
-    if (h_VecW)
-        free(h_VecW);
-     if (h_NormW)
-        free(h_NormW);
-		
-
-	
-    cudaThreadExit();
-    
-    exit(0);
-}
-
-// Allocates an array with zero value.
-void InitOne(float* data, int n)
-{
-    for (int i = 0; i < n; i++)
-        data[i] = 0;
-	data[0]=1;
-}
-
-void UploadArray(float* data, int n)
-{
-   int total = n*n;
-   int value=1;
-    for (int i = 0; i < total; i++){
-    	data[i] = (int) (rand() % (int)(101));//1;//value;
-	value ++; if(value>n) value =1;
+    double* d_x;
+    gpuErrchk(cudaMalloc(&d_x, d_mat.n * sizeof(double)));
+    RunGPUPowerMethod(d_mat, d_x);
+    double *x = new double[d_mat.n];
+    gpuErrchk(cudaMemcpy(x, d_x, d_mat.n * sizeof(double), cudaMemcpyDeviceToHost));
+    for(int i = 0; i < d_mat.n; i++)
+    {
+    	cout << x[i] << " ";
     }
+    cout << endl;
 }
+
 void PrintArray(float* data, int n)
 {
     for (int i = 0; i < n; i++)
         printf("[%d] => %f\n",i,data[i]);
 }
 
-// Parse program arguments
-void ParseArguments(int argc, char** argv)
-{
-    for (int i = 0; i < argc; ++i) {
-        if (strcmp(argv[i], "--size") == 0 || strcmp(argv[i], "-size") == 0) {
-                  GlobalSize = atoi(argv[i+1]);
-		  i = i + 1;
-        }
-        if (strcmp(argv[i], "--blocksize") == 0 || strcmp(argv[i], "-blocksize") == 0) {
-                  BlockSize = atoi(argv[i+1]);
-		  i = i + 1;
-	}
-    }
-}
