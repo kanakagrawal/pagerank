@@ -6,3 +6,6 @@
 *.fatbin
 pagerank
 debug
+a.out
+out
+*.o
