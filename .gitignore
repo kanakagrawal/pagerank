@@ -7,5 +7,6 @@
 pagerank
 debug
 a.out
+*.out
 out
 *.o

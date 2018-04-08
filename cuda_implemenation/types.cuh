@@ -18,6 +18,7 @@ public:
     Matrix CopyToHost();
     void CopyToHost(Matrix* dest);
     void clear();
+    void print();
 };
 
 #endif

@@ -2,6 +2,7 @@
 #include "Utilities.cuh"
 #include <cuda.h>
 #include <string>
+#include <iostream>
 
 void read(std::string filename, double** P_sparse, int** row_ind, int** col_ind, int* nnz, int * n);
 
@@ -45,8 +46,8 @@ Matrix Matrix::CopyToHost() {
     h_col_ind = new int[(n + 1)];
 
     gpuErrchk(cudaMemcpy(h_p, p, nnz * sizeof(double), cudaMemcpyDeviceToHost));
-    gpuErrchk(cudaMemcpy(h_row_ind, row_ind, nnz * sizeof(double), cudaMemcpyDeviceToHost));
-    gpuErrchk(cudaMemcpy(h_col_ind, col_ind, (n + 1) * sizeof(double), cudaMemcpyDeviceToHost));
+    gpuErrchk(cudaMemcpy(h_row_ind, row_ind, nnz * sizeof(int), cudaMemcpyDeviceToHost));
+    gpuErrchk(cudaMemcpy(h_col_ind, col_ind, (n + 1) * sizeof(int), cudaMemcpyDeviceToHost));
     
     return Matrix ( n, nnz, h_p, h_row_ind, h_col_ind, false );
 }
@@ -63,8 +64,8 @@ void Matrix::CopyToHost(Matrix* dest) {
     h_col_ind = new int[(n + 1)];
 
     gpuErrchk(cudaMemcpy(h_p, p, nnz * sizeof(double), cudaMemcpyDeviceToHost));
-    gpuErrchk(cudaMemcpy(h_row_ind, row_ind, nnz * sizeof(double), cudaMemcpyDeviceToHost));
-    gpuErrchk(cudaMemcpy(h_col_ind, col_ind, (n + 1) * sizeof(double), cudaMemcpyDeviceToHost));
+    gpuErrchk(cudaMemcpy(h_row_ind, row_ind, nnz * sizeof(int), cudaMemcpyDeviceToHost));
+    gpuErrchk(cudaMemcpy(h_col_ind, col_ind, (n + 1) * sizeof(int), cudaMemcpyDeviceToHost));
 
     dest->n = n;
     dest->nnz = nnz;
@@ -92,3 +93,22 @@ void Matrix::clear() {
 Matrix::~Matrix() {
     this->clear ();
 }
+
+void Matrix::print() {
+    if (device) {
+        Matrix t = this->CopyToHost();
+        t.print();
+    }
+    else {  
+        std::cout << n << " " << nnz << std::endl;
+        for (int i = 0; i < nnz; i++) {
+            std::cout << p[i] << " ";
+        }
+        std::cout << std::endl;
+
+        for (int i = 0; i < nnz; i++) {
+            std::cout << row_ind[i] << " ";
+        }
+        std::cout << std::endl;   
+    }
+} 
