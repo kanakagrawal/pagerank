@@ -14,6 +14,7 @@ float* h_VecV = NULL;
 float* d_VecV = NULL;
 float* h_VecW = NULL;
 float* d_VecW = NULL;
+float* h_NormW = NULL;
 float* d_NormW = NULL;
 
 // Variables to change
@@ -134,7 +135,7 @@ int main(int argc, char** argv)
     if (h_VecW == 0) 
       Cleanup();
 
-   float*  h_NormW = (float*)malloc(norm_size);
+   h_NormW = (float*)malloc(norm_size);
 
     // Initialize input matrix
     UploadArray(h_MatA, N);
