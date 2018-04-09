@@ -99,8 +99,13 @@ void Matrix::print() {
         Matrix t = this->CopyToHost();
         t.print();
     }
-    else {  
+    else {
         std::cout << n << " " << nnz << std::endl;
+		std::cout<<"p"<<std::endl;	  
+		for (int i = 0; i < nnz; i++) {
+            std::cout << p[i] << " ";
+        }
+        std::cout << std::endl;
 		std::cout<<"col_ind"<<std::endl;	  
 		for (int i = 0; i < (n+1); i++) {
             std::cout << col_ind[i] << " ";

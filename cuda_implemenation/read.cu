@@ -88,9 +88,16 @@ void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int*
 			prevRow = curRow;
 		}
 		curLengthCumulative++;
-		(*P_sparse)[i] = 1.0;
 	}
 	(*col_ind)[curRow] = curLengthCumulative;
+
+	int outdeg = 0;
+	for (int i = 0; i < *n; i++) {
+		outdeg = (*col_ind)[i + 1] - (*col_ind)[i];
+		for (int j = (*col_ind)[i]; j < (*col_ind)[i + 1]; j++) {
+			(*P_sparse)[j] = 1.0 / outdeg;
+		}
+	}
 }
 /*
 int main()

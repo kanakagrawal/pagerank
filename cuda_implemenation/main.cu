@@ -104,6 +104,16 @@ double* RandomInit(int n) {
     return d_x;
 }
 
+int compare_pairs (const void * a, const void * b)
+{
+    pair<double, double> _a = *(pair<double, double>*)a;
+    pair<double, double> _b = *(pair<double, double>*)b;
+
+    return _a.second < _b.second; 
+
+    // return ( ()->second - ((pair<double, double>*)b)->second );
+}
+
 int main(int argc, char** argv)
 {
     std::string filename;
@@ -153,13 +163,26 @@ int main(int argc, char** argv)
     
     int top = 10 < mat.n ? 10 : mat.n;
     size_t *ind = new size_t[top];
-    kthLargest(x, mat.n, top, ind);
 
+    kthLargest(x, mat.n, top, ind);
+    
+    pair<double, double> *top_ten = new pair<double, double>[top];
+
+    for (int i = 0; i < top; i++) {
+        top_ten[i].first = ind[i];
+        top_ten[i].second = x[ind[i]];
+    }
+
+    qsort (top_ten, top, sizeof(pair<double, double>), compare_pairs);
+    
     cout << "Top " << top << " link IDs are: " << endl;
     for (int i = 0; i < top; i++) {
-        cout << "ID: " << ind[i] << " - " << x[ind[i]] << endl;
+        cout << "ID: " << top_ten[i].first << " - " << top_ten[i].second << endl;
     }
+
+
     delete (ind);
+    delete (top_ten);
 }
 
 void PrintArray(double* data, int n)
