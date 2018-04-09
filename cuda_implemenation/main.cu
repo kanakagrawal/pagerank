@@ -97,7 +97,9 @@ int main(int argc, char** argv)
     Matrix d_mat = mat.CopyToDevice();
     
     double* d_x = RandomInit(d_mat.n);
-    
+    double x_norm = norm(d_x, d_mat.n);
+    d_x = divide (d_x, x_norm, d_mat.n);
+
 #ifdef FDEBUG
     mat.print();
 #endif

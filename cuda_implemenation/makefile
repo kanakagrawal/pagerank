@@ -33,3 +33,4 @@ find_top_k.o: find_top_k.cu
 
 clean:
 	rm -f debug pagerank *.o out
+
