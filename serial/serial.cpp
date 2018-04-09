@@ -123,7 +123,7 @@ std::string ParseArguments( int argc, char **argv ) {
 
 
 void SerialMatrixMul(double alpha, Matrix *mat, double* x, double* x_new){
-    alpha = 1.0;
+    // alpha = 1.0;
     for(int k = 0; k < mat->n; k++)
         x_new[k] = 0;
     for(int i =0; i<mat->n; i++){
