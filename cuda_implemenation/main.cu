@@ -25,20 +25,6 @@ void PrintArray(double* data, int n);
 void DevicePrintArray(double* data, int n);
 std::string ParseArguments( int argc, char **argv );
 
-/*
-void CPU_NormalizeW()
-{
-	int N = GlobalSize;
-	float normW=0;
-	for(int i=0;i<N;i++)
-		normW += h_VecW[i] * h_VecW[i];
-	
-	normW = sqrt(normW);
-	for(int i=0;i<N;i++)
-		h_VecV[i] = h_VecW[i]/normW;
-}
-*/
-
 #include <thrust/device_ptr.h>
 #include <thrust/for_each.h>
 
@@ -104,6 +90,7 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
 double* RandomInit(int n) {
     double *x = new double[n];
     // cout << "random init: " << endl;
+    srand(0);
     for (int i = 0; i < n; i++) {
         x[i] = (rand() % 100) / 100.0; 
         // cout << x[i] << " ";
@@ -127,7 +114,10 @@ int main(int argc, char** argv)
     Matrix d_mat = mat.CopyToDevice();
     
     double* d_x = RandomInit(d_mat.n);
-    
+    // Normalizing the vector d_x
+    double x_norm = norm(d_x, d_mat.n);
+    d_x = divide (d_x, x_norm, d_mat.n);
+
 #ifdef FDEBUG
     mat.print();
 #endif

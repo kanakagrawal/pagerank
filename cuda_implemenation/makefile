@@ -11,7 +11,7 @@ Utilities.o: Utilities.cu
 	nvcc Utilities.cu -c Utilities.o $(LDFLAGS) $(CCFLAGS)
 
 read.o: read.cu
-	nvcc read.cu -c read.o $(LDFLAGS) $(CCFLAGS)
+	nvcc -std=c++11 read.cu -c read.o $(LDFLAGS) $(CCFLAGS)
 
 types.o: types.cu types.cuh
 	nvcc types.cu -c types.o $(LDFLAGS) $(CCFLAGS)
@@ -33,3 +33,4 @@ find_top_k.o: find_top_k.cu
 
 clean:
 	rm -f debug pagerank *.o out
+
