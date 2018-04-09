@@ -87,13 +87,10 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
 	return x;
 }
 
-double* RandomInit(int n) {
+double* UniformInit(int n) {
     double *x = new double[n];
-    // cout << "random init: " << endl;
-    srand(0);
     for (int i = 0; i < n; i++) {
-        x[i] = (rand() % 100) / 100.0; 
-        // cout << x[i] << " ";
+        x[i] = 1.0 / n; 
     }
     cout << endl;
     double *d_x;
@@ -123,7 +120,7 @@ int main(int argc, char** argv)
 	// mat.print();
     Matrix d_mat = mat.CopyToDevice();
     
-    double* d_x = RandomInit(d_mat.n);
+    double* d_x = UniformInit(d_mat.n);
     // Normalizing the vector d_x
     double x_norm = norm(d_x, d_mat.n);
     d_x = divide (d_x, x_norm, d_mat.n);
