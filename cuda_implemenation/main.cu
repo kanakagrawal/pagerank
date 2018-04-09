@@ -8,6 +8,7 @@
 #include <float.h>
 #include <iostream>
 #include <fstream>
+#include "find_top_k.cuh"
 
 using namespace std;
 
@@ -97,10 +98,14 @@ int main(int argc, char** argv)
     
     double* d_x = RandomInit(d_mat.n);
     
+#ifdef FDEBUG
+    mat.print();
+#endif
+    
+#ifdef DEBUG
     Matrix temp = d_mat.CopyToHost();
     cout << temp.n << " - " << temp.nnz << endl; 
     cout << mat.n << " - " << mat.nnz << endl; 
-
     cout << "# Start 10 Elems" << endl;
     for (int i = 0; i < 10; i++){
         cout << temp.p[i] << " " << temp.row_ind[i] << " " << temp.col_ind[i] << endl; 
@@ -112,28 +117,29 @@ int main(int argc, char** argv)
         cout << temp.p[temp.nnz - i] << " " << temp.row_ind[temp.nnz - i] << " " << temp.col_ind[temp.n - i] << endl; 
         cout << mat.p[temp.nnz - i] << " " << mat.row_ind[temp.nnz - i] << " " << mat.col_ind[temp.n - i] << endl; 
     }
+#endif
 
     d_x = RunGPUPowerMethod(&d_mat, d_x);
     
     double *x = new double[d_mat.n];
     gpuErrchk(cudaMemcpy(x, d_x, d_mat.n * sizeof(double), cudaMemcpyDeviceToHost));
-    double max_val = x[0];
-    int max_pos = 0; 
 
-    ofstream f("output.out");
-    
+    ofstream f("output.out");    
     for(int i = 0; i < d_mat.n; i++)
     {
-        // cout << x[i] << " ";
-        if(max_val < x[i]) {
-            max_pos = i;
-            max_val = x[i];
-        }
         f << i + 1 << " " << x[i] << endl;
     }
-    cout << endl;
-    cout << "Max Link ID: " << max_pos + 1 <<  " with PR " << max_val << endl;
     f.close();
+    
+    int top = 10 < mat.n ? 10 : mat.n;
+    size_t *ind = new size_t[top];
+    kthLargest(x, mat.n, top, ind);
+
+    cout << "Top " << top << " link IDs are: " << endl;
+    for (int i = 0; i < top; i++) {
+        cout << "ID: " << ind[i] << " - " << x[ind[i]] << endl;
+    }
+    delete (ind);
 }
 
 void PrintArray(double* data, int n)

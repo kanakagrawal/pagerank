@@ -1,8 +1,8 @@
 LDFLAGS := -lcusparse -lcublas
 CCFLAGS := 
 
-out: main.o Utilities.o read.o types.o cuda_subtract.o cuda_norm.o cuda_matmul.o cuda_divide.o
-	nvcc -o out main.o Utilities.o read.o types.o cuda_matmul.o cuda_subtract.o cuda_norm.o cuda_divide.o $(LDFLAGS) $(CCFLAGS)
+out: main.o Utilities.o read.o types.o cuda_subtract.o cuda_norm.o cuda_matmul.o cuda_divide.o find_top_k.o
+	nvcc -o out main.o Utilities.o read.o types.o cuda_matmul.o cuda_subtract.o cuda_norm.o cuda_divide.o find_top_k.o $(LDFLAGS) $(CCFLAGS)
 
 main.o: main.cu
 	nvcc main.cu -c main.o $(LDFLAGS) $(CCFLAGS)
@@ -27,6 +27,9 @@ cuda_subtract.o : cuda_subtract.cu
 
 cuda_divide.o: cuda_divide.cu
 	nvcc cuda_divide.cu -c cuda_divide.o $(LDFLAGS) $(CCFLAGS)
+
+find_top_k.o: find_top_k.cu
+	nvcc find_top_k.cu -c find_top_k.o $(LDFLAGS) $(CCFLAGS)
 
 clean:
 	rm -f debug pagerank *.o out

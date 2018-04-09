@@ -1,18 +1,51 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
+#include <sstream>
 
 using namespace std;
+
+vector<string> split(const string &s, char delim) {
+    stringstream ss(s);
+    string item;
+    vector<string> tokens;
+    while (getline(ss, item, delim)) {
+        tokens.push_back(item);
+    }
+    return tokens;
+}
 
 void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int* nnz, int * n)
 {
 	fstream f(filename.c_str());
 	int v, e;
-	int ignore;
+	int ignore = 0; // Generally no links mapping
+	int one_starting = 1;
+	std::string::size_type sz;   // alias of size_t
 
-	f >> v;
-	f >> e;
-	f >> ignore;
+
+	/* 
+	 * Parsing the metadata of data
+	 */
+	string metadata;
+	getline (f, metadata);
+	
+	vector<string> tokens = split(metadata, ' ');
+
+	v = stoi ( tokens[0], &sz );
+	e = stoi ( tokens[1], &sz );
+	
+	if (tokens.size() == 2) { // Ignore the link to number mapping
+		ignore = 1;
+	}
+	else if (tokens.size() == 3) {
+		ignore = stoi ( tokens[2], &sz);
+	}
+	else if (tokens.size() == 4) {
+		ignore = stoi ( tokens[2], &sz);
+		one_starting = stoi ( tokens[3], &sz ); 
+	}
 	
 	*nnz = e;
 	*n = v;
@@ -41,8 +74,11 @@ void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int*
 	for(int i = 0; i < *nnz; i++)
 	{
 		f >> (*row_ind)[i];
-		(*row_ind)[i]--;
+		if (one_starting)
+			(*row_ind)[i]--;
 		f >> curRow;
+		if (!one_starting)
+			curRow ++;
 //		curRow--;
 		if (curRow != prevRow)
 		{
