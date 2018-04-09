@@ -28,21 +28,28 @@ double* RunCPUPowerMethod(Matrix* P, double* x_new)
 
 	double* x = x_new;
     double* temp;
-    double x_norm;
+    double omega;
+    double x_norm, x_new_norm;
     x_new = new double[P->n];
     cout << "Checkpoint" << endl;
 	while(abs(lambda - oldLambda) > EPS)
 	{
 		oldLambda = lambda;
         SerialMatrixMul(alpha, P, x, x_new);
-        double x_norm = 0;
+        x_norm = 0;
         for(int i =0; i<P->n; i++){
-            x_norm += abs(x_new[i]);
+            x_norm += abs(x[i]);
         }
-        cout<<x_norm<<endl;
+        x_new_norm = 0;
         for(int i =0; i<P->n; i++){
-            x_new[i] = x_new[i]/x_norm;
+            x_new_norm += abs(x_new[i]);
         }
+        omega = x_norm - x_new_norm;
+        
+        for(int i =0; i<P->n; i++){
+            x_new[i] += omega/P->n;
+        }
+
         // PrintArray(x_new,P->n);
         lambda = 0;
         for(int i = 0; i<P->n; i++){
@@ -57,13 +64,22 @@ double* RunCPUPowerMethod(Matrix* P, double* x_new)
 	return x;
 }
 
-double* RandomInit(int n) {
+double* UniformInit(int n) {
     double *x = new double[n];
-    srand(0);
     for (int i = 0; i < n; i++) {
-        x[i] = (rand() % 100) / 100.0; 
+        x[i] = 1.0 / n; 
     }
     return x;
+}
+
+int compare_pairs (const void * a, const void * b)
+{
+    pair<double, double> _a = *(pair<double, double>*)a;
+    pair<double, double> _b = *(pair<double, double>*)b;
+
+    return _a.second < _b.second; 
+
+    // return ( ()->second - ((pair<double, double>*)b)->second );
 }
 
 int main(int argc, char** argv)
@@ -71,16 +87,9 @@ int main(int argc, char** argv)
     std::string filename;
     filename = ParseArguments(argc, argv);
 
-    Matrix mat(filename);
-
-    double* x = RandomInit(mat.n);
-    double x_norm = 0;
-    for(int i =0; i<mat.n; i++){
-        x_norm += abs(x[i]);
-    }
-    for(int i =0; i<mat.n; i++){
-        x[i] = x[i]/x_norm;
-    }
+    Matrix temp(filename);
+    Matrix mat = *(temp.transpose());
+    double* x = UniformInit(mat.n);
 #ifdef FDEBUG
     mat.print();
 #endif
@@ -94,15 +103,28 @@ int main(int argc, char** argv)
     }
     f.close();
     
-    int top = 10 < mat.n ? 10 : mat.n;
+     int top = 10 < mat.n ? 10 : mat.n;
     size_t *ind = new size_t[top];
-    kthLargest(x, mat.n, top, ind);
 
+    kthLargest(x, mat.n, top, ind);
+    
+    pair<double, double> *top_ten = new pair<double, double>[top];
+
+    for (int i = 0; i < top; i++) {
+        top_ten[i].first = ind[i];
+        top_ten[i].second = x[ind[i]];
+    }
+
+    qsort (top_ten, top, sizeof(pair<double, double>), compare_pairs);
+    
     cout << "Top " << top << " link IDs are: " << endl;
     for (int i = 0; i < top; i++) {
-        cout << "ID: " << ind[i] << " - " << x[ind[i]] << endl;
+        cout << "ID: " << top_ten[i].first << " - " << top_ten[i].second << endl;
     }
+
+
     delete (ind);
+    delete (top_ten);
 }
 
 void PrintArray(double* data, int n)

@@ -13,6 +13,7 @@ public:
 
     Matrix(int n, int nnz, double *p, int *row_ind, int *col_ind, bool device);
     Matrix(std::string filename);
+    Matrix* transpose();
     ~Matrix();
     void clear();
     void print();

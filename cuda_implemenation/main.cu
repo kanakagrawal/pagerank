@@ -63,7 +63,6 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
 		oldLambda = lambda;
         MatrixMul(alpha, P, x, x_new);
 
-
         x_norm = norm(x, P->n);
         x_new_norm = norm(x_new, P->n);
         omega = x_norm - x_new_norm;
@@ -73,9 +72,6 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
         thrust::device_ptr<double> d_th_x_new(x_new);
         thrust::for_each(d_th_x_new, d_th_x_new + P->n, add_functor( omega / ( (double) P->n ) ));
         
-        // x_new_norm = norm(x_new, P->n);
-        // x_new = divide (x_new, x_new_norm, P->n);
-
 		temp = subtract(x, x_new, P->n);
 		lambda = norm(temp, P->n);
         printf("CPU lamda: %f \n", lambda);
@@ -121,9 +117,6 @@ int main(int argc, char** argv)
     Matrix d_mat = mat.CopyToDevice();
     
     double* d_x = UniformInit(d_mat.n);
-    // Normalizing the vector d_x
-    double x_norm = norm(d_x, d_mat.n);
-    d_x = divide (d_x, x_norm, d_mat.n);
 
 #ifdef FDEBUG
     mat.print();
