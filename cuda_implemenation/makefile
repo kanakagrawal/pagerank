@@ -1,5 +1,5 @@
 LDFLAGS := -lcusparse -lcublas
-CCFLAGS := 
+CCFLAGS := -Wno-deprecated-gpu-targets
 
 out: main.o Utilities.o read.o types.o cuda_subtract.o cuda_norm.o cuda_matmul.o cuda_divide.o find_top_k.o
 	nvcc -o out main.o Utilities.o read.o types.o cuda_matmul.o cuda_subtract.o cuda_norm.o cuda_divide.o find_top_k.o $(LDFLAGS) $(CCFLAGS)
