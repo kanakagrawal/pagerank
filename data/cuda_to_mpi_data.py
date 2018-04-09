@@ -4,10 +4,11 @@ filename = sys.argv[1]
 adj_list = []
 with open(filename,"r") as f:
 	x= f.readline()
-	V,E,temp = x.split()
+	V,E,temp,index = x.split()
 	V = int(V)
 	E = int(E)
 	temp = int(temp)
+	index = int(index)
 	for i in range(V):
 		adj_list.append([])
 	if temp == 1:
@@ -18,7 +19,10 @@ with open(filename,"r") as f:
 		a,b = x.split()
 		a = int(a)
 		b = int(b)
-		adj_list[a-1].append(b-1)
+		if index == 0:
+			adj_list[a].append(b)
+		else:
+			adj_list[a-1].append(b-1)
 for i in range(V):
 	adj_list[i].sort()
 with open("mpi_"+filename,"w") as f:
