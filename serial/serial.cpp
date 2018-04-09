@@ -43,7 +43,7 @@ double* RunCPUPowerMethod(Matrix* P, double* x_new)
         for(int i =0; i<P->n; i++){
             x_new[i] = x_new[i]/x_norm;
         }
-        PrintArray(x_new,P->n);
+        // PrintArray(x_new,P->n);
         lambda = 0;
         for(int i = 0; i<P->n; i++){
             lambda += abs(x[i] - x_new[i]);
@@ -123,6 +123,7 @@ std::string ParseArguments( int argc, char **argv ) {
 
 
 void SerialMatrixMul(double alpha, Matrix *mat, double* x, double* x_new){
+    alpha = 1.0;
     for(int k = 0; k < mat->n; k++)
         x_new[k] = 0;
     for(int i =0; i<mat->n; i++){
@@ -130,4 +131,6 @@ void SerialMatrixMul(double alpha, Matrix *mat, double* x, double* x_new){
             x_new[i] = x_new[i] + alpha*mat->p[k]*x[mat->row_ind[k]];
         }
     }
+    PrintArray(x,mat->n);
+    PrintArray(x_new,mat->n);
 }

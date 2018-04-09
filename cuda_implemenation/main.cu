@@ -58,6 +58,8 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
 	{
 		oldLambda = lambda;
         MatrixMul(alpha, P, x, x_new);
+        DevicePrintArray(x,P->n);
+        DevicePrintArray(x_new,P->n);
         x_norm = norm(x_new, P->n);
         x_new = divide (x_new, x_norm, P->n);
 
