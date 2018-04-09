@@ -13,8 +13,8 @@
 using namespace std;
 
 // Variables to change
-const float EPS = 0.000001;
-double alpha = 0.8;
+const float EPS = 0.00001;
+double alpha = 0.85;
 
 void MatrixMul(double alpha, Matrix *mat, double* x, double* x_new); // returns alpha * mat * x
 double* subtract(double* d_x,double* d_y, int n);
@@ -39,6 +39,23 @@ void CPU_NormalizeW()
 }
 */
 
+#include <thrust/device_ptr.h>
+#include <thrust/for_each.h>
+
+struct add_functor
+{
+
+    const double a;
+
+    add_functor(double _a) : a(_a) {}
+
+    __host__ __device__
+    void operator()(double &x)
+    {
+        x = x + a;
+    }
+};
+
 
 
 double* RunGPUPowerMethod(Matrix* P, double* x_new)
@@ -50,7 +67,8 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
 
 	double* x = x_new;
     double* temp;
-    double x_norm;
+    double x_norm, x_new_norm;
+    double omega;
     gpuErrchk(cudaMalloc(&x_new, P->n * sizeof(double)));
     //power loop
     cout << "Checkpoint" << endl;
@@ -58,12 +76,24 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
 	{
 		oldLambda = lambda;
         MatrixMul(alpha, P, x, x_new);
-        x_norm = norm(x_new, P->n);
-        x_new = divide (x_new, x_norm, P->n);
+
+
+        x_norm = norm(x, P->n);
+        x_new_norm = norm(x_new, P->n);
+        omega = x_norm - x_new_norm;
+
+        cout << "Omega: " << omega << endl;
+
+        thrust::device_ptr<double> d_th_x_new(x_new);
+        thrust::for_each(d_th_x_new, d_th_x_new + P->n, add_functor( omega / ( (double) P->n ) ));
+        
+        // x_new_norm = norm(x_new, P->n);
+        // x_new = divide (x_new, x_new_norm, P->n);
 
 		temp = subtract(x, x_new, P->n);
 		lambda = norm(temp, P->n);
-		printf("CPU lamda: %f \n", lambda);
+        printf("CPU lamda: %f \n", lambda);
+        cout << endl;
 		x = x_new;
 		x_new = temp;
 	}
