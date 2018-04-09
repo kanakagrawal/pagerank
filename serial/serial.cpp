@@ -131,6 +131,4 @@ void SerialMatrixMul(double alpha, Matrix *mat, double* x, double* x_new){
             x_new[i] = x_new[i] + alpha*mat->p[k]*x[mat->row_ind[k]];
         }
     }
-    PrintArray(x,mat->n);
-    PrintArray(x_new,mat->n);
 }

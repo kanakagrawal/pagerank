@@ -25,22 +25,6 @@ void PrintArray(double* data, int n);
 void DevicePrintArray(double* data, int n);
 std::string ParseArguments( int argc, char **argv );
 
-/*
-void CPU_NormalizeW()
-{
-	int N = GlobalSize;
-	float normW=0;
-	for(int i=0;i<N;i++)
-		normW += h_VecW[i] * h_VecW[i];
-	
-	normW = sqrt(normW);
-	for(int i=0;i<N;i++)
-		h_VecV[i] = h_VecW[i]/normW;
-}
-*/
-
-
-
 double* RunGPUPowerMethod(Matrix* P, double* x_new)
 {
 	printf("*************************************\n");
@@ -58,8 +42,6 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
 	{
 		oldLambda = lambda;
         MatrixMul(alpha, P, x, x_new);
-        DevicePrintArray(x,P->n);
-        DevicePrintArray(x_new,P->n);
         x_norm = norm(x_new, P->n);
         x_new = divide (x_new, x_norm, P->n);
 
