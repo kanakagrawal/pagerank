@@ -8,15 +8,21 @@ void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int*
 {
 	fstream f(filename.c_str());
 	int v, e;
+	int ignore;
+
 	f >> v;
 	f >> e;
+	f >> ignore;
+	
 	*nnz = e;
 	*n = v;
-	string dummy;
-	int du;
-	for(int i = 0; i < v; i++)
-	{
-		f >> du >> dummy;
+	if (ignore) {
+		string dummy;
+		int du;
+		for(int i = 0; i < v; i++)
+		{
+			f >> du >> dummy;
+		}
 	}
 	
 	*row_ind = new int[e];
