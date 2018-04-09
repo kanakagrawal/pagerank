@@ -40,7 +40,7 @@ void CPU_NormalizeW()
 
 
 
-double* RunGPUPowerMethod(Matrix P, double* x_new)
+double* RunGPUPowerMethod(Matrix* P, double* x_new)
 {
 	printf("*************************************\n");
 	double oldLambda = DBL_MAX;
@@ -50,18 +50,18 @@ double* RunGPUPowerMethod(Matrix P, double* x_new)
 	double* x = x_new;
     double* temp;
     double x_norm;
-    gpuErrchk(cudaMalloc(&x_new, P.n * sizeof(double)));
+    gpuErrchk(cudaMalloc(&x_new, P->n * sizeof(double)));
     //power loop
     cout << "Checkpoint" << endl;
 	while(abs(lambda - oldLambda) > EPS)
 	{
 		oldLambda = lambda;
-        MatrixMul(alpha, &P, x, x_new);
-        x_norm = norm(x_new, P.n);
-        x_new = divide (x_new, x_norm, P.n);
+        MatrixMul(alpha, P, x, x_new);
+        x_norm = norm(x_new, P->n);
+        x_new = divide (x_new, x_norm, P->n);
 
-		temp = subtract(x, x_new, P.n);
-		lambda = norm(temp, P.n);
+		temp = subtract(x, x_new, P->n);
+		lambda = norm(temp, P->n);
 		printf("CPU lamda: %f \n", lambda);
 		x = x_new;
 		x_new = temp;
@@ -113,7 +113,7 @@ int main(int argc, char** argv)
         cout << mat.p[temp.nnz - i] << " " << mat.row_ind[temp.nnz - i] << " " << mat.col_ind[temp.n - i] << endl; 
     }
 
-    d_x = RunGPUPowerMethod(d_mat, d_x);
+    d_x = RunGPUPowerMethod(&d_mat, d_x);
     
     double *x = new double[d_mat.n];
     gpuErrchk(cudaMemcpy(x, d_x, d_mat.n * sizeof(double), cudaMemcpyDeviceToHost));
