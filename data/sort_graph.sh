@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # python generate_data.py $1 $2 $3
-tail -n $2 $3 | sort -k2n -k1n > temp
+tail -n $2 $3 | sort -k1n -k2n > temp
 uniq temp > part2
 count=$(wc -l part2 | cut -f 1 -d " ")
 

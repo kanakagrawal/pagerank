@@ -73,8 +73,8 @@ void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int*
 	int curRow, prevRow = 0;
 	for(int i = 0; i < *nnz; i++)
 	{
-		f >> (*row_ind)[i];
 		f >> curRow;
+		f >> (*row_ind)[i];
 		if (one_starting)
 			(*row_ind)[i]--;
 		if (!one_starting)

@@ -47,7 +47,7 @@ void MatrixMul(double alpha, Matrix *mat, double* d_x_dense, double *d_y_dense)
 
     
     const double beta  = 0.;
-    cusparseSafeCall(cusparseDcsrmv(handle, CUSPARSE_OPERATION_NON_TRANSPOSE, N, N, nnzA, &alpha, descrA, mat->p, mat->col_ind, mat->row_ind, d_x_dense, 
+    cusparseSafeCall(cusparseDcsrmv(handle, CUSPARSE_OPERATION_TRANSPOSE, N, N, nnzA, &alpha, descrA, mat->p, mat->col_ind, mat->row_ind, d_x_dense, 
                                     &beta, d_y_dense));
 	gpuErrchk(cudaDeviceSynchronize()); 
 #ifdef DEBUG
