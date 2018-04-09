@@ -74,6 +74,7 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
 double* RandomInit(int n) {
     double *x = new double[n];
     // cout << "random init: " << endl;
+    srand(0);
     for (int i = 0; i < n; i++) {
         x[i] = (rand() % 100) / 100.0; 
         // cout << x[i] << " ";

@@ -39,9 +39,11 @@ double* RunCPUPowerMethod(Matrix* P, double* x_new)
         for(int i =0; i<P->n; i++){
             x_norm += abs(x_new[i]);
         }
+        cout<<x_norm<<endl;
         for(int i =0; i<P->n; i++){
             x_new[i] = x_new[i]/x_norm;
         }
+        PrintArray(x_new,P->n);
         lambda = 0;
         for(int i = 0; i<P->n; i++){
             lambda += abs(x[i] - x_new[i]);
@@ -57,6 +59,7 @@ double* RunCPUPowerMethod(Matrix* P, double* x_new)
 
 double* RandomInit(int n) {
     double *x = new double[n];
+    srand(0);
     for (int i = 0; i < n; i++) {
         x[i] = (rand() % 100) / 100.0; 
     }
