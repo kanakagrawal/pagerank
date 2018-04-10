@@ -4,6 +4,7 @@
 #include "device_functions.h"
 #include "types.cuh"
 #include "Utilities.cuh"
+#include <sys/time.h>
 #include <string>
 #include <float.h>
 #include <iostream>
