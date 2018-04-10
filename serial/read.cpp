@@ -35,7 +35,8 @@ void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int*
 
 	v = stoi ( tokens[0], &sz );
 	e = stoi ( tokens[1], &sz );
-	
+	cout<<"Number of Vertices = "<<v<<endl;
+	cout<<"Number of Edges = "<<e<<endl;
 	if (tokens.size() == 2) { // Ignore the link to number mapping
 		ignore = 1;
 	}
