@@ -1,134 +1,170 @@
 Number of Vertices = 9664
 Number of Edges = 16150
-Time to read input:  7.6 ms 
-The elapsed time in copying to device was 0.53 ms
+Time to read input:  7.7 ms 
+The elapsed time in copying to device was 0.54 ms
 
 *************************************
 Checkpoint
-Omega: 0.583858
-CPU lamda: 0.699859 
+Omega: 0.557849
+CPU lamda: 0.743600 
 
-Omega: 0.586754
-CPU lamda: 0.216627 
+Omega: 0.561118
+CPU lamda: 0.244552 
 
-Omega: 0.598075
-CPU lamda: 0.069170 
+Omega: 0.574697
+CPU lamda: 0.082967 
 
-Omega: 0.587983
-CPU lamda: 0.029301 
+Omega: 0.561836
+CPU lamda: 0.037342 
 
-Omega: 0.585999
-CPU lamda: 0.013928 
+Omega: 0.55915
+CPU lamda: 0.018860 
 
-Omega: 0.584529
-CPU lamda: 0.008405 
+Omega: 0.557034
+CPU lamda: 0.012092 
 
-Omega: 0.583403
-CPU lamda: 0.005656 
+Omega: 0.555313
+CPU lamda: 0.008646 
 
-Omega: 0.582615
-CPU lamda: 0.004055 
+Omega: 0.554033
+CPU lamda: 0.006587 
 
-Omega: 0.58205
-CPU lamda: 0.002953 
+Omega: 0.553058
+CPU lamda: 0.005095 
 
-Omega: 0.58162
-CPU lamda: 0.002228 
+Omega: 0.55227
+CPU lamda: 0.004084 
 
-Omega: 0.581292
-CPU lamda: 0.001707 
+Omega: 0.551631
+CPU lamda: 0.003326 
 
-Omega: 0.581042
-CPU lamda: 0.001335 
+Omega: 0.551113
+CPU lamda: 0.002764 
 
-Omega: 0.580845
-CPU lamda: 0.001050 
+Omega: 0.550681
+CPU lamda: 0.002309 
 
-Omega: 0.580693
-CPU lamda: 0.000831 
+Omega: 0.550326
+CPU lamda: 0.001942 
 
-Omega: 0.580573
-CPU lamda: 0.000658 
+Omega: 0.550028
+CPU lamda: 0.001635 
 
-Omega: 0.580479
-CPU lamda: 0.000524 
+Omega: 0.54978
+CPU lamda: 0.001382 
 
-Omega: 0.580405
-CPU lamda: 0.000416 
+Omega: 0.549572
+CPU lamda: 0.001166 
 
-Omega: 0.580347
-CPU lamda: 0.000331 
+Omega: 0.549398
+CPU lamda: 0.000987 
 
-Omega: 0.5803
-CPU lamda: 0.000263 
+Omega: 0.549251
+CPU lamda: 0.000833 
 
-Omega: 0.580264
-CPU lamda: 0.000210 
+Omega: 0.549128
+CPU lamda: 0.000706 
 
-Omega: 0.580234
-CPU lamda: 0.000167 
+Omega: 0.549024
+CPU lamda: 0.000597 
 
-Omega: 0.580212
-CPU lamda: 0.000133 
+Omega: 0.548937
+CPU lamda: 0.000506 
 
-Omega: 0.580193
-CPU lamda: 0.000106 
+Omega: 0.548863
+CPU lamda: 0.000428 
 
-Omega: 0.580179
-CPU lamda: 0.000085 
+Omega: 0.548802
+CPU lamda: 0.000363 
 
-Omega: 0.580167
-CPU lamda: 0.000067 
+Omega: 0.548749
+CPU lamda: 0.000307 
 
-Omega: 0.580158
-CPU lamda: 0.000054 
+Omega: 0.548705
+CPU lamda: 0.000261 
 
-Omega: 0.580151
-CPU lamda: 0.000043 
+Omega: 0.548668
+CPU lamda: 0.000220 
 
-Omega: 0.580145
-CPU lamda: 0.000034 
+Omega: 0.548637
+CPU lamda: 0.000187 
 
-Omega: 0.580141
-CPU lamda: 0.000027 
+Omega: 0.548611
+CPU lamda: 0.000158 
 
-Omega: 0.580137
+Omega: 0.548588
+CPU lamda: 0.000134 
+
+Omega: 0.548569
+CPU lamda: 0.000114 
+
+Omega: 0.548554
+CPU lamda: 0.000096 
+
+Omega: 0.54854
+CPU lamda: 0.000082 
+
+Omega: 0.548529
+CPU lamda: 0.000069 
+
+Omega: 0.54852
+CPU lamda: 0.000059 
+
+Omega: 0.548512
+CPU lamda: 0.000050 
+
+Omega: 0.548505
+CPU lamda: 0.000042 
+
+Omega: 0.548499
+CPU lamda: 0.000036 
+
+Omega: 0.548494
+CPU lamda: 0.000030 
+
+Omega: 0.54849
+CPU lamda: 0.000026 
+
+Omega: 0.548487
 CPU lamda: 0.000022 
 
-Omega: 0.580134
-CPU lamda: 0.000017 
+Omega: 0.548484
+CPU lamda: 0.000018 
 
-Omega: 0.580132
-CPU lamda: 0.000014 
+Omega: 0.548481
+CPU lamda: 0.000016 
 
-Omega: 0.58013
+Omega: 0.548479
+CPU lamda: 0.000013 
+
+Omega: 0.548478
 CPU lamda: 0.000011 
 
-Omega: 0.580129
-CPU lamda: 0.000009 
+Omega: 0.548476
+CPU lamda: 0.000010 
 
-Omega: 0.580128
+Omega: 0.548475
+CPU lamda: 0.000008 
+
+Omega: 0.548474
 CPU lamda: 0.000007 
 
-Omega: 0.580127
+Omega: 0.548473
 CPU lamda: 0.000006 
 
-Omega: 0.580126
-CPU lamda: 0.000004 
-
-Omega: 0.580125
-CPU lamda: 0.000004 
+Omega: 0.548472
+CPU lamda: 0.000005 
 
 *************************************
-The elapsed time in gpu was 464.05 ms
+The elapsed time in gpu was 474.82 ms
 Top 10 link IDs are: 
-ID: 1488 - 0.00447618
-ID: 6427 - 0.0044742
-ID: 4391 - 0.00431463
-ID: 2078 - 0.00428334
-ID: 66 - 0.00419799
-ID: 4823 - 0.00412025
-ID: 0 - 0.00384597
-ID: 1617 - 0.00340559
-ID: 1806 - 0.00312613
-ID: 1489 - 0.00287585
+ID: 1488 - 0.0062299
+ID: 4391 - 0.0060838
+ID: 66 - 0.00477303
+ID: 6427 - 0.00462171
+ID: 4823 - 0.00453152
+ID: 2078 - 0.00434223
+ID: 0 - 0.00419746
+ID: 1489 - 0.00396394
+ID: 1617 - 0.00364476
+ID: 2408 - 0.00363445

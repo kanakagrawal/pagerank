@@ -1,52 +1,59 @@
 Number of Vertices = 450000
 Number of Edges = 5351877
-Time to read input:  1037.5 ms 
+Time to read input:  1000.9 ms 
 *************************************
 Checkpoint
-CPU lamda: 1.234427 
-CPU lamda: 0.608374 
-CPU lamda: 0.289803 
-CPU lamda: 0.156604 
-CPU lamda: 0.086353 
-CPU lamda: 0.050453 
-CPU lamda: 0.029368 
-CPU lamda: 0.018326 
-CPU lamda: 0.011571 
-CPU lamda: 0.007791 
-CPU lamda: 0.005385 
-CPU lamda: 0.003771 
-CPU lamda: 0.002695 
-CPU lamda: 0.001920 
-CPU lamda: 0.001367 
-CPU lamda: 0.000973 
-CPU lamda: 0.000694 
-CPU lamda: 0.000495 
-CPU lamda: 0.000353 
-CPU lamda: 0.000252 
-CPU lamda: 0.000179 
-CPU lamda: 0.000128 
-CPU lamda: 0.000091 
-CPU lamda: 0.000065 
-CPU lamda: 0.000046 
-CPU lamda: 0.000033 
-CPU lamda: 0.000024 
+CPU lamda: 1.311578 
+CPU lamda: 0.686797 
+CPU lamda: 0.347608 
+CPU lamda: 0.199581 
+CPU lamda: 0.116928 
+CPU lamda: 0.072587 
+CPU lamda: 0.044893 
+CPU lamda: 0.029765 
+CPU lamda: 0.019968 
+CPU lamda: 0.014284 
+CPU lamda: 0.010490 
+CPU lamda: 0.007805 
+CPU lamda: 0.005926 
+CPU lamda: 0.004487 
+CPU lamda: 0.003393 
+CPU lamda: 0.002567 
+CPU lamda: 0.001945 
+CPU lamda: 0.001475 
+CPU lamda: 0.001117 
+CPU lamda: 0.000846 
+CPU lamda: 0.000641 
+CPU lamda: 0.000485 
+CPU lamda: 0.000368 
+CPU lamda: 0.000279 
+CPU lamda: 0.000211 
+CPU lamda: 0.000160 
+CPU lamda: 0.000121 
+CPU lamda: 0.000092 
+CPU lamda: 0.000070 
+CPU lamda: 0.000053 
+CPU lamda: 0.000040 
+CPU lamda: 0.000030 
+CPU lamda: 0.000023 
 CPU lamda: 0.000017 
-CPU lamda: 0.000012 
-CPU lamda: 0.000009 
+CPU lamda: 0.000013 
+CPU lamda: 0.000010 
+CPU lamda: 0.000008 
 CPU lamda: 0.000006 
 CPU lamda: 0.000004 
 CPU lamda: 0.000003 
 CPU lamda: 0.000002 
 *************************************
-Time for algorithm:  1971.4 ms 
+Time for algorithm:  2368.0 ms 
 Top 10 link IDs are: 
-ID: 2 - 0.180496
-ID: 1 - 0.156435
-ID: 4 - 0.0278414
-ID: 38 - 0.025393
-ID: 0 - 0.0146315
-ID: 14 - 0.0087542
-ID: 22 - 0.00711801
-ID: 170 - 0.00472349
-ID: 17 - 0.00421365
-ID: 7 - 0.00421365
+ID: 2 - 0.235924
+ID: 1 - 0.17921
+ID: 4 - 0.0265573
+ID: 38 - 0.0255283
+ID: 0 - 0.0130676
+ID: 14 - 0.00845551
+ID: 22 - 0.00725521
+ID: 170 - 0.00498841
+ID: 862 - 0.00439998
+ID: 4322 - 0.00434842
