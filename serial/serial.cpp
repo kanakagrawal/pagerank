@@ -6,7 +6,8 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#include "serial_types.h"
+#include <sys/time.h>
+#include "types.h"
 #include "find_top_k.h"
 
 using namespace std;
@@ -32,36 +33,36 @@ double* RunCPUPowerMethod(Matrix* P, double* x_new)
     double x_norm, x_new_norm;
     x_new = new double[P->n];
     cout << "Checkpoint" << endl;
-	while(abs(lambda - oldLambda) > EPS)
-	{
-		oldLambda = lambda;
-        SerialMatrixMul(alpha, P, x, x_new);
-        x_norm = 0;
-        for(int i =0; i<P->n; i++){
-            x_norm += abs(x[i]);
-        }
-        x_new_norm = 0;
-        for(int i =0; i<P->n; i++){
-            x_new_norm += abs(x_new[i]);
-        }
-        omega = x_norm - x_new_norm;
-        
-        for(int i =0; i<P->n; i++){
-            x_new[i] += omega/P->n;
-        }
+    while(abs(lambda - oldLambda) > EPS)
+    {
+      oldLambda = lambda;
+      SerialMatrixMul(alpha, P, x, x_new);
+      x_norm = 0;
+      for(int i =0; i<P->n; i++){
+        x_norm += abs(x[i]);
+    }
+    x_new_norm = 0;
+    for(int i =0; i<P->n; i++){
+        x_new_norm += abs(x_new[i]);
+    }
+    omega = x_norm - x_new_norm;
+
+    for(int i =0; i<P->n; i++){
+        x_new[i] += omega/P->n;
+    }
 
         // PrintArray(x_new,P->n);
-        lambda = 0;
-        for(int i = 0; i<P->n; i++){
-            lambda += abs(x[i] - x_new[i]);
-        }
-		printf("CPU lamda: %f \n", lambda);
-        double* temp = x;
-		x = x_new;
-        x_new = temp;
-	}
-    printf("*************************************\n");
-	return x;
+    lambda = 0;
+    for(int i = 0; i<P->n; i++){
+        lambda += abs(x[i] - x_new[i]);
+    }
+    printf("CPU lamda: %f \n", lambda);
+    double* temp = x;
+    x = x_new;
+    x_new = temp;
+}
+printf("*************************************\n");
+return x;
 }
 
 double* UniformInit(int n) {
@@ -94,7 +95,14 @@ int main(int argc, char** argv)
     mat.print();
 #endif
     
+    struct timeval t1, t2;
+    
+    gettimeofday(&t1, 0);
     x = RunCPUPowerMethod(&mat, x);
+    gettimeofday(&t2, 0);
+    
+    double time = (1000000.0*(t2.tv_sec-t1.tv_sec) + t2.tv_usec-t1.tv_usec)/1000.0;
+    printf("Time to generate:  %3.1f ms \n", time);
 
     ofstream f("output.out");    
     for(int i = 0; i < mat.n; i++)
@@ -103,7 +111,7 @@ int main(int argc, char** argv)
     }
     f.close();
     
-     int top = 10 < mat.n ? 10 : mat.n;
+    int top = 10 < mat.n ? 10 : mat.n;
     size_t *ind = new size_t[top];
 
     kthLargest(x, mat.n, top, ind);
