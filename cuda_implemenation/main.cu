@@ -50,7 +50,6 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
 	printf("*************************************\n");
 	double oldLambda = DBL_MAX;
 	double lambda = 0;
-	double alpha = 0.8;
 
 	double* x = x_new;
     double* temp;
