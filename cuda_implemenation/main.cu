@@ -127,12 +127,12 @@ double* UniformInit(int n) {
 
 int compare_pairs (const void * a, const void * b)
 {
-    pair<double, double> _a = *(pair<double, double>*)a;
-    pair<double, double> _b = *(pair<double, double>*)b;
+    pair<int, double> _a = *(pair<int, double>*)a;
+    pair<int, double> _b = *(pair<int, double>*)b;
 
     return _a.second < _b.second; 
 
-    // return ( ()->second - ((pair<double, double>*)b)->second );
+    // return ( ()->second - ((pair<int, double>*)b)->second );
 }
 
 int main(int argc, char** argv)
@@ -215,14 +215,14 @@ int main(int argc, char** argv)
 
     kthLargest(x, mat.n, top, ind);
     
-    pair<double, double> *top_ten = new pair<double, double>[top];
+    pair<int, double> *top_ten = new pair<int, double>[top];
 
     for (int i = 0; i < top; i++) {
         top_ten[i].first = ind[i];
         top_ten[i].second = x[ind[i]];
     }
 
-    qsort (top_ten, top, sizeof(pair<double, double>), compare_pairs);
+    qsort (top_ten, top, sizeof(pair<int, double>), compare_pairs);
     
     cout << "Top " << top << " link IDs are: " << endl;
     for (int i = 0; i < top; i++) {
