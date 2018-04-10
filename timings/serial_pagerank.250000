@@ -1,52 +1,58 @@
 Number of Vertices = 250000
 Number of Edges = 2755675
-Time to read input:  527.9 ms 
+Time to read input:  577.7 ms 
 *************************************
 Checkpoint
-CPU lamda: 1.228674 
-CPU lamda: 0.593972 
-CPU lamda: 0.272171 
-CPU lamda: 0.147191 
-CPU lamda: 0.082157 
-CPU lamda: 0.046558 
-CPU lamda: 0.026349 
-CPU lamda: 0.016882 
-CPU lamda: 0.011429 
-CPU lamda: 0.007760 
-CPU lamda: 0.005341 
-CPU lamda: 0.003709 
-CPU lamda: 0.002618 
-CPU lamda: 0.001852 
-CPU lamda: 0.001304 
-CPU lamda: 0.000918 
-CPU lamda: 0.000648 
-CPU lamda: 0.000457 
-CPU lamda: 0.000323 
-CPU lamda: 0.000228 
-CPU lamda: 0.000161 
-CPU lamda: 0.000113 
-CPU lamda: 0.000080 
-CPU lamda: 0.000056 
-CPU lamda: 0.000040 
-CPU lamda: 0.000028 
-CPU lamda: 0.000020 
+CPU lamda: 1.305466 
+CPU lamda: 0.670539 
+CPU lamda: 0.326459 
+CPU lamda: 0.187584 
+CPU lamda: 0.111248 
+CPU lamda: 0.066983 
+CPU lamda: 0.040278 
+CPU lamda: 0.027420 
+CPU lamda: 0.019724 
+CPU lamda: 0.014228 
+CPU lamda: 0.010405 
+CPU lamda: 0.007678 
+CPU lamda: 0.005757 
+CPU lamda: 0.004326 
+CPU lamda: 0.003237 
+CPU lamda: 0.002423 
+CPU lamda: 0.001815 
+CPU lamda: 0.001362 
+CPU lamda: 0.001021 
+CPU lamda: 0.000765 
+CPU lamda: 0.000574 
+CPU lamda: 0.000430 
+CPU lamda: 0.000322 
+CPU lamda: 0.000242 
+CPU lamda: 0.000181 
+CPU lamda: 0.000136 
+CPU lamda: 0.000102 
+CPU lamda: 0.000076 
+CPU lamda: 0.000057 
+CPU lamda: 0.000043 
+CPU lamda: 0.000032 
+CPU lamda: 0.000024 
+CPU lamda: 0.000018 
 CPU lamda: 0.000014 
 CPU lamda: 0.000010 
-CPU lamda: 0.000007 
-CPU lamda: 0.000005 
+CPU lamda: 0.000008 
+CPU lamda: 0.000006 
+CPU lamda: 0.000004 
 CPU lamda: 0.000003 
 CPU lamda: 0.000002 
-CPU lamda: 0.000002 
 *************************************
-Time for algorithm:  1025.5 ms 
+Time for algorithm:  1238.6 ms 
 Top 10 link IDs are: 
-ID: 2 - 0.18655
-ID: 1 - 0.162818
-ID: 4 - 0.0270679
-ID: 38 - 0.0249682
-ID: 0 - 0.0135296
-ID: 14 - 0.00928138
-ID: 22 - 0.00718919
-ID: 170 - 0.00454732
-ID: 17 - 0.00450666
-ID: 7 - 0.00450666
+ID: 2 - 0.242192
+ID: 1 - 0.186907
+ID: 4 - 0.0256789
+ID: 38 - 0.0249467
+ID: 0 - 0.0119804
+ID: 14 - 0.0089405
+ID: 22 - 0.00727694
+ID: 170 - 0.0047448
+ID: 862 - 0.00430913
+ID: 4322 - 0.00425045

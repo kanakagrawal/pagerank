@@ -1,74 +1,77 @@
 Number of Vertices = 20000000
 Number of Edges = 79999989
-Time to read input:  17426.1 ms 
-The elapsed time in copying to device was 215.81 ms
+Time to read input:  17894.5 ms 
+The elapsed time in copying to device was 219.75 ms
 
 *************************************
 Checkpoint
-Omega: 0.214668
-CPU lamda: 0.358402 
+Omega: 0.165584
+CPU lamda: 0.380802 
 
-Omega: 0.214658
-CPU lamda: 0.148171 
+Omega: 0.165573
+CPU lamda: 0.167271 
 
-Omega: 0.214657
-CPU lamda: 0.064642 
+Omega: 0.165572
+CPU lamda: 0.077535 
 
-Omega: 0.21466
-CPU lamda: 0.028777 
+Omega: 0.165576
+CPU lamda: 0.036674 
 
-Omega: 0.21466
-CPU lamda: 0.012925 
+Omega: 0.165576
+CPU lamda: 0.017502 
 
-Omega: 0.21466
-CPU lamda: 0.005835 
+Omega: 0.165577
+CPU lamda: 0.008395 
 
-Omega: 0.21466
-CPU lamda: 0.002642 
+Omega: 0.165577
+CPU lamda: 0.004039 
 
-Omega: 0.21466
-CPU lamda: 0.001198 
+Omega: 0.165577
+CPU lamda: 0.001946 
 
-Omega: 0.21466
-CPU lamda: 0.000544 
+Omega: 0.165577
+CPU lamda: 0.000938 
 
-Omega: 0.21466
-CPU lamda: 0.000247 
+Omega: 0.165577
+CPU lamda: 0.000453 
 
-Omega: 0.21466
-CPU lamda: 0.000112 
+Omega: 0.165577
+CPU lamda: 0.000219 
 
-Omega: 0.21466
+Omega: 0.165577
+CPU lamda: 0.000106 
+
+Omega: 0.165577
 CPU lamda: 0.000051 
 
-Omega: 0.21466
-CPU lamda: 0.000023 
+Omega: 0.165577
+CPU lamda: 0.000025 
 
-Omega: 0.21466
-CPU lamda: 0.000011 
+Omega: 0.165577
+CPU lamda: 0.000012 
 
-Omega: 0.21466
-CPU lamda: 0.000005 
+Omega: 0.165577
+CPU lamda: 0.000006 
 
-Omega: 0.21466
-CPU lamda: 0.000002 
+Omega: 0.165577
+CPU lamda: 0.000003 
 
-Omega: 0.21466
+Omega: 0.165577
 CPU lamda: 0.000001 
 
-Omega: 0.21466
-CPU lamda: 0.000000 
+Omega: 0.165577
+CPU lamda: 0.000001 
 
 *************************************
-The elapsed time in gpu was 42756.45 ms
+The elapsed time in gpu was 45215.38 ms
 Top 10 link IDs are: 
-ID: 7.42928e+06 - 3.55957e-07
-ID: 737716 - 3.29535e-07
-ID: 42901 - 3.28641e-07
-ID: 1.50802e+07 - 3.28318e-07
-ID: 1.11496e+07 - 3.24347e-07
-ID: 1.8379e+07 - 3.2428e-07
-ID: 1.85579e+06 - 3.2273e-07
-ID: 1.19333e+07 - 3.22497e-07
-ID: 1.86772e+06 - 3.18006e-07
-ID: 1.04866e+07 - 3.16678e-07
+ID: 7429277 - 3.87164e-07
+ID: 42901 - 3.64662e-07
+ID: 15080225 - 3.62203e-07
+ID: 737716 - 3.61669e-07
+ID: 1855794 - 3.61396e-07
+ID: 11149594 - 3.6112e-07
+ID: 1867716 - 3.56978e-07
+ID: 18378961 - 3.56949e-07
+ID: 11933253 - 3.55747e-07
+ID: 17530050 - 3.53546e-07

@@ -1,48 +1,52 @@
 Number of Vertices = 10000
 Number of Edges = 53711
-Time to read input:  12.1 ms 
+Time to read input:  18.5 ms 
 *************************************
 Checkpoint
-CPU lamda: 1.243382 
-CPU lamda: 0.394296 
-CPU lamda: 0.182642 
-CPU lamda: 0.085430 
-CPU lamda: 0.049266 
-CPU lamda: 0.030782 
-CPU lamda: 0.019914 
-CPU lamda: 0.013060 
-CPU lamda: 0.008615 
-CPU lamda: 0.005691 
-CPU lamda: 0.003763 
-CPU lamda: 0.002486 
-CPU lamda: 0.001643 
-CPU lamda: 0.001085 
-CPU lamda: 0.000717 
-CPU lamda: 0.000473 
-CPU lamda: 0.000313 
-CPU lamda: 0.000206 
-CPU lamda: 0.000136 
-CPU lamda: 0.000090 
-CPU lamda: 0.000059 
-CPU lamda: 0.000039 
-CPU lamda: 0.000026 
-CPU lamda: 0.000017 
-CPU lamda: 0.000011 
-CPU lamda: 0.000007 
-CPU lamda: 0.000005 
+CPU lamda: 1.321093 
+CPU lamda: 0.445124 
+CPU lamda: 0.219072 
+CPU lamda: 0.108874 
+CPU lamda: 0.066710 
+CPU lamda: 0.044287 
+CPU lamda: 0.030442 
+CPU lamda: 0.021211 
+CPU lamda: 0.014867 
+CPU lamda: 0.010435 
+CPU lamda: 0.007331 
+CPU lamda: 0.005145 
+CPU lamda: 0.003613 
+CPU lamda: 0.002535 
+CPU lamda: 0.001779 
+CPU lamda: 0.001248 
+CPU lamda: 0.000876 
+CPU lamda: 0.000615 
+CPU lamda: 0.000431 
+CPU lamda: 0.000303 
+CPU lamda: 0.000212 
+CPU lamda: 0.000149 
+CPU lamda: 0.000105 
+CPU lamda: 0.000073 
+CPU lamda: 0.000051 
+CPU lamda: 0.000036 
+CPU lamda: 0.000025 
+CPU lamda: 0.000018 
+CPU lamda: 0.000012 
+CPU lamda: 0.000009 
+CPU lamda: 0.000006 
+CPU lamda: 0.000004 
 CPU lamda: 0.000003 
 CPU lamda: 0.000002 
-CPU lamda: 0.000001 
 *************************************
-Time for algorithm:  25.4 ms 
+Time for algorithm:  39.2 ms 
 Top 10 link IDs are: 
-ID: 2 - 0.246459
-ID: 1 - 0.214895
-ID: 38 - 0.0212368
-ID: 4 - 0.0199225
-ID: 14 - 0.0144439
-ID: 22 - 0.00819611
-ID: 17 - 0.00789914
-ID: 7 - 0.00789914
-ID: 80 - 0.00562739
-ID: 40 - 0.00541485
+ID: 2 - 0.298886
+ID: 1 - 0.244567
+ID: 38 - 0.0202471
+ID: 4 - 0.0182273
+ID: 14 - 0.0131231
+ID: 22 - 0.00771032
+ID: 17 - 0.00681858
+ID: 7 - 0.00681858
+ID: 80 - 0.00524079
+ID: 40 - 0.00488264

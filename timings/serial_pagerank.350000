@@ -1,52 +1,59 @@
 Number of Vertices = 350000
 Number of Edges = 4039301
-Time to read input:  809.9 ms 
+Time to read input:  798.9 ms 
 *************************************
 Checkpoint
-CPU lamda: 1.231682 
-CPU lamda: 0.603613 
-CPU lamda: 0.287503 
-CPU lamda: 0.155731 
-CPU lamda: 0.086072 
-CPU lamda: 0.050261 
-CPU lamda: 0.029211 
-CPU lamda: 0.018185 
-CPU lamda: 0.011482 
-CPU lamda: 0.007758 
-CPU lamda: 0.005366 
-CPU lamda: 0.003751 
-CPU lamda: 0.002674 
-CPU lamda: 0.001904 
-CPU lamda: 0.001353 
-CPU lamda: 0.000962 
-CPU lamda: 0.000685 
-CPU lamda: 0.000488 
-CPU lamda: 0.000347 
-CPU lamda: 0.000247 
-CPU lamda: 0.000176 
-CPU lamda: 0.000125 
+CPU lamda: 1.308663 
+CPU lamda: 0.681423 
+CPU lamda: 0.344849 
+CPU lamda: 0.198468 
+CPU lamda: 0.116549 
+CPU lamda: 0.072312 
+CPU lamda: 0.044653 
+CPU lamda: 0.029535 
+CPU lamda: 0.019814 
+CPU lamda: 0.014225 
+CPU lamda: 0.010454 
+CPU lamda: 0.007765 
+CPU lamda: 0.005880 
+CPU lamda: 0.004449 
+CPU lamda: 0.003359 
+CPU lamda: 0.002537 
+CPU lamda: 0.001919 
+CPU lamda: 0.001452 
+CPU lamda: 0.001099 
+CPU lamda: 0.000831 
+CPU lamda: 0.000628 
+CPU lamda: 0.000475 
+CPU lamda: 0.000359 
+CPU lamda: 0.000272 
+CPU lamda: 0.000206 
+CPU lamda: 0.000155 
+CPU lamda: 0.000118 
 CPU lamda: 0.000089 
-CPU lamda: 0.000063 
-CPU lamda: 0.000045 
-CPU lamda: 0.000032 
-CPU lamda: 0.000023 
-CPU lamda: 0.000016 
-CPU lamda: 0.000012 
-CPU lamda: 0.000008 
-CPU lamda: 0.000006 
+CPU lamda: 0.000067 
+CPU lamda: 0.000051 
+CPU lamda: 0.000038 
+CPU lamda: 0.000029 
+CPU lamda: 0.000022 
+CPU lamda: 0.000017 
+CPU lamda: 0.000013 
+CPU lamda: 0.000010 
+CPU lamda: 0.000007 
+CPU lamda: 0.000005 
 CPU lamda: 0.000004 
 CPU lamda: 0.000003 
 CPU lamda: 0.000002 
 *************************************
-Time for algorithm:  1494.1 ms 
+Time for algorithm:  1807.6 ms 
 Top 10 link IDs are: 
-ID: 2 - 0.182293
-ID: 1 - 0.158123
-ID: 4 - 0.0276258
-ID: 38 - 0.0252657
-ID: 0 - 0.014317
-ID: 14 - 0.00897761
-ID: 22 - 0.00713759
-ID: 170 - 0.00470963
-ID: 17 - 0.00430731
-ID: 7 - 0.00430731
+ID: 2 - 0.237732
+ID: 1 - 0.181081
+ID: 4 - 0.0263259
+ID: 38 - 0.0253671
+ID: 0 - 0.0127636
+ID: 14 - 0.00865796
+ID: 22 - 0.00726477
+ID: 170 - 0.00496415
+ID: 862 - 0.00437728
+ID: 4322 - 0.00432143

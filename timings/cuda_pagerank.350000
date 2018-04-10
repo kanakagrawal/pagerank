@@ -1,122 +1,143 @@
 Number of Vertices = 350000
 Number of Edges = 4039301
-Time to read input:  605.8 ms 
-The elapsed time in copying to device was 11.57 ms
+Time to read input:  613.1 ms 
+The elapsed time in copying to device was 10.93 ms
 
 *************************************
 Checkpoint
-Omega: 0.240217
-CPU lamda: 1.231682 
+Omega: 0.192731
+CPU lamda: 1.308663 
 
-Omega: 0.236173
-CPU lamda: 0.603613 
+Omega: 0.188166
+CPU lamda: 0.681423 
 
-Omega: 0.232788
-CPU lamda: 0.287503 
+Omega: 0.184105
+CPU lamda: 0.344849 
 
-Omega: 0.231737
-CPU lamda: 0.155731 
+Omega: 0.182766
+CPU lamda: 0.198468 
 
-Omega: 0.230935
-CPU lamda: 0.086072 
+Omega: 0.18168
+CPU lamda: 0.116549 
 
-Omega: 0.229786
-CPU lamda: 0.050261 
+Omega: 0.180026
+CPU lamda: 0.072312 
 
-Omega: 0.229252
-CPU lamda: 0.029211 
+Omega: 0.17921
+CPU lamda: 0.044653 
 
-Omega: 0.229074
-CPU lamda: 0.018185 
+Omega: 0.178922
+CPU lamda: 0.029535 
 
-Omega: 0.229199
-CPU lamda: 0.011482 
+Omega: 0.179137
+CPU lamda: 0.019814 
 
-Omega: 0.228688
-CPU lamda: 0.007758 
+Omega: 0.178201
+CPU lamda: 0.014225 
 
-Omega: 0.228458
-CPU lamda: 0.005366 
+Omega: 0.177752
+CPU lamda: 0.010454 
 
-Omega: 0.228332
-CPU lamda: 0.003751 
+Omega: 0.177492
+CPU lamda: 0.007765 
 
-Omega: 0.228243
-CPU lamda: 0.002674 
+Omega: 0.177294
+CPU lamda: 0.005880 
 
-Omega: 0.22818
-CPU lamda: 0.001904 
+Omega: 0.177148
+CPU lamda: 0.004449 
 
-Omega: 0.228125
-CPU lamda: 0.001353 
+Omega: 0.177011
+CPU lamda: 0.003359 
 
-Omega: 0.22809
-CPU lamda: 0.000962 
+Omega: 0.176918
+CPU lamda: 0.002537 
 
-Omega: 0.228064
-CPU lamda: 0.000685 
+Omega: 0.176847
+CPU lamda: 0.001919 
 
-Omega: 0.228047
-CPU lamda: 0.000488 
+Omega: 0.176796
+CPU lamda: 0.001452 
 
-Omega: 0.228034
-CPU lamda: 0.000347 
+Omega: 0.176755
+CPU lamda: 0.001099 
 
-Omega: 0.228025
-CPU lamda: 0.000247 
+Omega: 0.176724
+CPU lamda: 0.000831 
 
-Omega: 0.228019
-CPU lamda: 0.000176 
+Omega: 0.176701
+CPU lamda: 0.000628 
 
-Omega: 0.228014
-CPU lamda: 0.000125 
+Omega: 0.176684
+CPU lamda: 0.000475 
 
-Omega: 0.228011
+Omega: 0.176671
+CPU lamda: 0.000359 
+
+Omega: 0.176661
+CPU lamda: 0.000272 
+
+Omega: 0.176653
+CPU lamda: 0.000206 
+
+Omega: 0.176648
+CPU lamda: 0.000155 
+
+Omega: 0.176643
+CPU lamda: 0.000118 
+
+Omega: 0.17664
 CPU lamda: 0.000089 
 
-Omega: 0.228008
-CPU lamda: 0.000063 
+Omega: 0.176637
+CPU lamda: 0.000067 
 
-Omega: 0.228007
-CPU lamda: 0.000045 
+Omega: 0.176636
+CPU lamda: 0.000051 
 
-Omega: 0.228006
-CPU lamda: 0.000032 
+Omega: 0.176634
+CPU lamda: 0.000038 
 
-Omega: 0.228005
-CPU lamda: 0.000023 
+Omega: 0.176633
+CPU lamda: 0.000029 
 
-Omega: 0.228004
-CPU lamda: 0.000016 
+Omega: 0.176632
+CPU lamda: 0.000022 
 
-Omega: 0.228004
-CPU lamda: 0.000012 
+Omega: 0.176632
+CPU lamda: 0.000017 
 
-Omega: 0.228003
-CPU lamda: 0.000008 
+Omega: 0.176631
+CPU lamda: 0.000013 
 
-Omega: 0.228003
-CPU lamda: 0.000006 
+Omega: 0.176631
+CPU lamda: 0.000010 
 
-Omega: 0.228003
+Omega: 0.176631
+CPU lamda: 0.000007 
+
+Omega: 0.17663
+CPU lamda: 0.000005 
+
+Omega: 0.17663
 CPU lamda: 0.000004 
 
-Omega: 0.228003
+Omega: 0.17663
 CPU lamda: 0.000003 
 
-Omega: 0.228003
+Omega: 0.17663
 CPU lamda: 0.000002 
 
 *************************************
-The elapsed time in gpu was 2414.30 ms
+The elapsed time in gpu was 2769.11 ms
 Top 10 link IDs are: 
-ID: 2 - 0.182293
-ID: 1 - 0.158123
-ID: 4 - 0.0276258
-ID: 38 - 0.0252657
-ID: 0 - 0.014317
-ID: 14 - 0.00897761
-ID: 22 - 0.00713759
-ID: 170 - 0.00470963
-ID: 7 - 0.00430731
-ID: 17 - 0.00430731
+ID: 2 - 0.237732
+ID: 1 - 0.181081
+ID: 4 - 0.0263259
+ID: 38 - 0.0253671
+ID: 0 - 0.0127636
+ID: 14 - 0.00865796
+ID: 22 - 0.00726477
+ID: 170 - 0.00496415
+ID: 862 - 0.00437728
+ID: 4322 - 0.00432143

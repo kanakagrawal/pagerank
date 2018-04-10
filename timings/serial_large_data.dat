@@ -1,36 +1,37 @@
 Number of Vertices = 20000000
 Number of Edges = 79999989
-Time to read input:  17420.5 ms 
+Time to read input:  17367.3 ms 
 *************************************
 Checkpoint
-CPU lamda: 0.358402 
-CPU lamda: 0.148171 
-CPU lamda: 0.064642 
-CPU lamda: 0.028777 
-CPU lamda: 0.012925 
-CPU lamda: 0.005835 
-CPU lamda: 0.002642 
-CPU lamda: 0.001198 
-CPU lamda: 0.000544 
-CPU lamda: 0.000247 
-CPU lamda: 0.000112 
+CPU lamda: 0.380802 
+CPU lamda: 0.167271 
+CPU lamda: 0.077535 
+CPU lamda: 0.036674 
+CPU lamda: 0.017502 
+CPU lamda: 0.008395 
+CPU lamda: 0.004039 
+CPU lamda: 0.001946 
+CPU lamda: 0.000938 
+CPU lamda: 0.000453 
+CPU lamda: 0.000219 
+CPU lamda: 0.000106 
 CPU lamda: 0.000051 
-CPU lamda: 0.000023 
-CPU lamda: 0.000011 
-CPU lamda: 0.000005 
-CPU lamda: 0.000002 
+CPU lamda: 0.000025 
+CPU lamda: 0.000012 
+CPU lamda: 0.000006 
+CPU lamda: 0.000003 
 CPU lamda: 0.000001 
-CPU lamda: 0.000000 
+CPU lamda: 0.000001 
 *************************************
-Time for algorithm:  64076.4 ms 
+Time for algorithm:  68459.9 ms 
 Top 10 link IDs are: 
-ID: 7.42928e+06 - 3.55957e-07
-ID: 737716 - 3.29535e-07
-ID: 42901 - 3.28641e-07
-ID: 1.50802e+07 - 3.28318e-07
-ID: 1.11496e+07 - 3.24347e-07
-ID: 1.8379e+07 - 3.2428e-07
-ID: 1.85579e+06 - 3.2273e-07
-ID: 1.19333e+07 - 3.22497e-07
-ID: 1.86772e+06 - 3.18006e-07
-ID: 1.04866e+07 - 3.16678e-07
+ID: 7.42928e+06 - 3.87164e-07
+ID: 42901 - 3.64662e-07
+ID: 1.50802e+07 - 3.62203e-07
+ID: 737716 - 3.61669e-07
+ID: 1.85579e+06 - 3.61396e-07
+ID: 1.11496e+07 - 3.6112e-07
+ID: 1.86772e+06 - 3.56978e-07
+ID: 1.8379e+07 - 3.56949e-07
+ID: 1.19333e+07 - 3.55747e-07
+ID: 1.753e+07 - 3.53546e-07

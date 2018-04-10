@@ -1,56 +1,68 @@
 Number of Vertices = 9664
 Number of Edges = 16150
-Time to read input:  10.7 ms 
+Time to read input:  10.6 ms 
 *************************************
 Checkpoint
-CPU lamda: 0.699859 
-CPU lamda: 0.216627 
-CPU lamda: 0.069170 
-CPU lamda: 0.029301 
-CPU lamda: 0.013928 
-CPU lamda: 0.008405 
-CPU lamda: 0.005656 
-CPU lamda: 0.004055 
-CPU lamda: 0.002953 
-CPU lamda: 0.002228 
-CPU lamda: 0.001707 
-CPU lamda: 0.001335 
-CPU lamda: 0.001050 
-CPU lamda: 0.000831 
-CPU lamda: 0.000658 
-CPU lamda: 0.000524 
-CPU lamda: 0.000416 
-CPU lamda: 0.000331 
-CPU lamda: 0.000263 
-CPU lamda: 0.000210 
-CPU lamda: 0.000167 
-CPU lamda: 0.000133 
-CPU lamda: 0.000106 
-CPU lamda: 0.000085 
-CPU lamda: 0.000067 
-CPU lamda: 0.000054 
-CPU lamda: 0.000043 
-CPU lamda: 0.000034 
-CPU lamda: 0.000027 
+CPU lamda: 0.743600 
+CPU lamda: 0.244552 
+CPU lamda: 0.082967 
+CPU lamda: 0.037342 
+CPU lamda: 0.018860 
+CPU lamda: 0.012092 
+CPU lamda: 0.008646 
+CPU lamda: 0.006587 
+CPU lamda: 0.005095 
+CPU lamda: 0.004084 
+CPU lamda: 0.003326 
+CPU lamda: 0.002764 
+CPU lamda: 0.002309 
+CPU lamda: 0.001942 
+CPU lamda: 0.001635 
+CPU lamda: 0.001382 
+CPU lamda: 0.001166 
+CPU lamda: 0.000987 
+CPU lamda: 0.000833 
+CPU lamda: 0.000706 
+CPU lamda: 0.000597 
+CPU lamda: 0.000506 
+CPU lamda: 0.000428 
+CPU lamda: 0.000363 
+CPU lamda: 0.000307 
+CPU lamda: 0.000261 
+CPU lamda: 0.000220 
+CPU lamda: 0.000187 
+CPU lamda: 0.000158 
+CPU lamda: 0.000134 
+CPU lamda: 0.000114 
+CPU lamda: 0.000096 
+CPU lamda: 0.000082 
+CPU lamda: 0.000069 
+CPU lamda: 0.000059 
+CPU lamda: 0.000050 
+CPU lamda: 0.000042 
+CPU lamda: 0.000036 
+CPU lamda: 0.000030 
+CPU lamda: 0.000026 
 CPU lamda: 0.000022 
-CPU lamda: 0.000017 
-CPU lamda: 0.000014 
+CPU lamda: 0.000018 
+CPU lamda: 0.000016 
+CPU lamda: 0.000013 
 CPU lamda: 0.000011 
-CPU lamda: 0.000009 
+CPU lamda: 0.000010 
+CPU lamda: 0.000008 
 CPU lamda: 0.000007 
 CPU lamda: 0.000006 
-CPU lamda: 0.000004 
-CPU lamda: 0.000004 
+CPU lamda: 0.000005 
 *************************************
-Time for algorithm:  34.0 ms 
+Time for algorithm:  42.4 ms 
 Top 10 link IDs are: 
-ID: 1488 - 0.00447618
-ID: 6427 - 0.0044742
-ID: 4391 - 0.00431463
-ID: 2078 - 0.00428334
-ID: 66 - 0.00419799
-ID: 4823 - 0.00412025
-ID: 0 - 0.00384597
-ID: 1617 - 0.00340559
-ID: 1806 - 0.00312613
-ID: 1489 - 0.00287585
+ID: 1488 - 0.0062299
+ID: 4391 - 0.0060838
+ID: 66 - 0.00477303
+ID: 6427 - 0.00462171
+ID: 4823 - 0.00453152
+ID: 2078 - 0.00434223
+ID: 0 - 0.00419746
+ID: 1489 - 0.00396394
+ID: 1617 - 0.00364476
+ID: 2408 - 0.00363445

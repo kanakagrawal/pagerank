@@ -16,19 +16,12 @@ using namespace std;
 void read(string filename, double** P_sparse, int** row_ind, int** col_ind, int* nnz, int * n);
 
 // returns alpha * mat * x
-void MatrixMul(double alpha, Matrix *mat, double* d_x_dense, double *d_y_dense)
+void MatrixMul(double alpha, Matrix *mat, double* d_x_dense, double *d_y_dense, cusparseHandle_t handle, cusparseMatDescr_t descrA)
 {
-    // --- Initialize cuSPARSE
-    cusparseHandle_t handle;    cusparseSafeCall(cusparseCreate(&handle));
+    
 
     const int N = mat->n;                // --- Number of rows and columns
-    int nnzA = mat->nnz;                           // --- Number of nonzero elements in dense matrix A
-
-    // --- Descriptor for sparse matrix A
-    cusparseMatDescr_t descrA;      cusparseSafeCall(cusparseCreateMatDescr(&descrA));
-    cusparseSafeCall(cusparseSetMatType     (descrA, CUSPARSE_MATRIX_TYPE_GENERAL));
-    cusparseSafeCall(cusparseSetMatIndexBase(descrA, CUSPARSE_INDEX_BASE_ZERO));  
-
+    int nnzA = mat->nnz;                           // --- Number of nonzero elements in dense matrix A  
 
 #ifdef DEBUG
     printf("\nOriginal matrix A in CSR format\n\n");
@@ -44,6 +37,7 @@ void MatrixMul(double alpha, Matrix *mat, double* d_x_dense, double *d_y_dense)
     }
 	gpuErrchk(cudaMemcpy(d_y_dense, h_y_dense, N * sizeof(double), cudaMemcpyHostToDevice));
     // Matrix mat = mat->CopyToDevice();
+    free(h_y_dense);
 
     
     const double beta  = 0.;

@@ -1,86 +1,92 @@
 Number of Vertices = 150000
 Number of Edges = 796966
-Time to read input:  169.4 ms 
-The elapsed time in copying to device was 2.73 ms
+Time to read input:  165.9 ms 
+The elapsed time in copying to device was 2.54 ms
 
 *************************************
 Checkpoint
-Omega: 0.281248
-CPU lamda: 1.201396 
+Omega: 0.236326
+CPU lamda: 1.276483 
 
-Omega: 0.252638
-CPU lamda: 0.531192 
+Omega: 0.204028
+CPU lamda: 0.599666 
 
-Omega: 0.247166
-CPU lamda: 0.266972 
+Omega: 0.197464
+CPU lamda: 0.320223 
 
-Omega: 0.239595
-CPU lamda: 0.158075 
+Omega: 0.187816
+CPU lamda: 0.201455 
 
-Omega: 0.23777
-CPU lamda: 0.092524 
+Omega: 0.185344
+CPU lamda: 0.125285 
 
-Omega: 0.236809
-CPU lamda: 0.049677 
+Omega: 0.183963
+CPU lamda: 0.071470 
 
-Omega: 0.236548
-CPU lamda: 0.024368 
+Omega: 0.183564
+CPU lamda: 0.037250 
 
-Omega: 0.236514
-CPU lamda: 0.012434 
+Omega: 0.183508
+CPU lamda: 0.020194 
 
-Omega: 0.236271
-CPU lamda: 0.005569 
+Omega: 0.183089
+CPU lamda: 0.009611 
 
-Omega: 0.236188
-CPU lamda: 0.002615 
+Omega: 0.182936
+CPU lamda: 0.004795 
 
-Omega: 0.236175
-CPU lamda: 0.001184 
+Omega: 0.182912
+CPU lamda: 0.002306 
 
-Omega: 0.236184
-CPU lamda: 0.000569 
+Omega: 0.182929
+CPU lamda: 0.001178 
 
-Omega: 0.236185
-CPU lamda: 0.000276 
+Omega: 0.182931
+CPU lamda: 0.000606 
 
-Omega: 0.236179
-CPU lamda: 0.000153 
+Omega: 0.182919
+CPU lamda: 0.000357 
 
-Omega: 0.236178
-CPU lamda: 0.000084 
+Omega: 0.182915
+CPU lamda: 0.000209 
 
-Omega: 0.236178
-CPU lamda: 0.000043 
+Omega: 0.182916
+CPU lamda: 0.000114 
 
-Omega: 0.236178
-CPU lamda: 0.000023 
+Omega: 0.182916
+CPU lamda: 0.000063 
 
-Omega: 0.236178
-CPU lamda: 0.000011 
+Omega: 0.182916
+CPU lamda: 0.000033 
 
-Omega: 0.236178
+Omega: 0.182915
+CPU lamda: 0.000019 
+
+Omega: 0.182915
+CPU lamda: 0.000010 
+
+Omega: 0.182915
 CPU lamda: 0.000006 
 
-Omega: 0.236178
+Omega: 0.182915
 CPU lamda: 0.000003 
 
-Omega: 0.236178
+Omega: 0.182915
 CPU lamda: 0.000002 
 
-Omega: 0.236178
+Omega: 0.182915
 CPU lamda: 0.000001 
 
 *************************************
-The elapsed time in gpu was 706.73 ms
+The elapsed time in gpu was 721.48 ms
 Top 10 link IDs are: 
-ID: 4 - 0.0915814
-ID: 0 - 0.0790939
-ID: 34 - 0.0778636
-ID: 20 - 0.0435429
-ID: 2 - 0.0315848
-ID: 146 - 0.0252561
-ID: 3424 - 0.0207801
-ID: 14 - 0.0118191
-ID: 16 - 0.0108767
-ID: 6 - 0.0100965
+ID: 4 - 0.0987697
+ID: 34 - 0.08832
+ID: 0 - 0.0832027
+ID: 20 - 0.053786
+ID: 2 - 0.0321648
+ID: 146 - 0.0295967
+ID: 3424 - 0.0250389
+ID: 14 - 0.0135236
+ID: 16 - 0.0105938
+ID: 6 - 0.0104459
