@@ -28,7 +28,7 @@ cuda_subtract.o : cuda_subtract.cu
 cuda_divide.o: cuda_divide.cu
 	nvcc cuda_divide.cu -c cuda_divide.o $(LDFLAGS) $(CCFLAGS)
 
-find_top_k.o: find_top_k.cu
+find_top_k.o: find_top_k.cu find_top_k.cuh
 	nvcc find_top_k.cu -c find_top_k.o $(LDFLAGS) $(CCFLAGS)
 
 clean:
