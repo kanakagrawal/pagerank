@@ -10,3 +10,4 @@ a.out
 *.out
 out
 *.o
+serial_out
