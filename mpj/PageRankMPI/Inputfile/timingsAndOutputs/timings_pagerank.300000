@@ -1,0 +1,126 @@
+MPJ Express (0.44) is started in the multicore configuration
+Max_Iterations: 1000, Threshold: 1.0E-5
+--Current Iteration: 0 delta: 1.0000000000012281
+Time for calculating delta after computation in the loop: 0 : 28 milliseconds
+Time for doing power method iteration (distributed across all nodes): 0 : 125 milliseconds
+--Current Iteration: 1 delta: 0.6796951537958311
+Time for calculating delta after computation in the loop: 1 : 4 milliseconds
+Time for doing power method iteration (distributed across all nodes): 1 : 134 milliseconds
+--Current Iteration: 2 delta: 0.3438991261922498
+Time for calculating delta after computation in the loop: 2 : 7 milliseconds
+Time for doing power method iteration (distributed across all nodes): 2 : 161 milliseconds
+--Current Iteration: 3 delta: 0.19826113226491046
+Time for calculating delta after computation in the loop: 3 : 7 milliseconds
+Time for doing power method iteration (distributed across all nodes): 3 : 35 milliseconds
+--Current Iteration: 4 delta: 0.11640771191298115
+Time for calculating delta after computation in the loop: 4 : 6 milliseconds
+Time for doing power method iteration (distributed across all nodes): 4 : 35 milliseconds
+--Current Iteration: 5 delta: 0.07103059501651539
+Time for calculating delta after computation in the loop: 5 : 6 milliseconds
+Time for doing power method iteration (distributed across all nodes): 5 : 33 milliseconds
+--Current Iteration: 6 delta: 0.0422313234663105
+Time for calculating delta after computation in the loop: 6 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 6 : 29 milliseconds
+--Current Iteration: 7 delta: 0.02836809749655474
+Time for calculating delta after computation in the loop: 7 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 7 : 29 milliseconds
+--Current Iteration: 8 delta: 0.019988745650970648
+Time for calculating delta after computation in the loop: 8 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 8 : 30 milliseconds
+--Current Iteration: 9 delta: 0.01425746897343803
+Time for calculating delta after computation in the loop: 9 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 9 : 32 milliseconds
+--Current Iteration: 10 delta: 0.010446063243958385
+Time for calculating delta after computation in the loop: 10 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 10 : 29 milliseconds
+--Current Iteration: 11 delta: 0.007759713425970713
+Time for calculating delta after computation in the loop: 11 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 11 : 29 milliseconds
+--Current Iteration: 12 delta: 0.005859683759725765
+Time for calculating delta after computation in the loop: 12 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 12 : 36 milliseconds
+--Current Iteration: 13 delta: 0.00441688196072848
+Time for calculating delta after computation in the loop: 13 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 13 : 37 milliseconds
+--Current Iteration: 14 delta: 0.0033222171291279455
+Time for calculating delta after computation in the loop: 14 : 3 milliseconds
+Time for doing power method iteration (distributed across all nodes): 14 : 36 milliseconds
+--Current Iteration: 15 delta: 0.002502512742579641
+Time for calculating delta after computation in the loop: 15 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 15 : 35 milliseconds
+--Current Iteration: 16 delta: 0.001886569128670263
+Time for calculating delta after computation in the loop: 16 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 16 : 89 milliseconds
+--Current Iteration: 17 delta: 0.0014228664868015347
+Time for calculating delta after computation in the loop: 17 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 17 : 28 milliseconds
+--Current Iteration: 18 delta: 0.0010726793877087863
+Time for calculating delta after computation in the loop: 18 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 18 : 29 milliseconds
+--Current Iteration: 19 delta: 8.084598847112301E-4
+Time for calculating delta after computation in the loop: 19 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 19 : 27 milliseconds
+--Current Iteration: 20 delta: 6.094651647793731E-4
+Time for calculating delta after computation in the loop: 20 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 20 : 29 milliseconds
+--Current Iteration: 21 delta: 4.5949861616599965E-4
+Time for calculating delta after computation in the loop: 21 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 21 : 34 milliseconds
+--Current Iteration: 22 delta: 3.464352612933522E-4
+Time for calculating delta after computation in the loop: 22 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 22 : 32 milliseconds
+--Current Iteration: 23 delta: 2.611671534130604E-4
+Time for calculating delta after computation in the loop: 23 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 23 : 31 milliseconds
+--Current Iteration: 24 delta: 1.9688901842100518E-4
+Time for calculating delta after computation in the loop: 24 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 24 : 30 milliseconds
+--Current Iteration: 25 delta: 1.484350311159358E-4
+Time for calculating delta after computation in the loop: 25 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 25 : 35 milliseconds
+--Current Iteration: 26 delta: 1.119059101111636E-4
+Time for calculating delta after computation in the loop: 26 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 26 : 31 milliseconds
+--Current Iteration: 27 delta: 8.436635832785205E-5
+Time for calculating delta after computation in the loop: 27 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 27 : 31 milliseconds
+--Current Iteration: 28 delta: 6.360329588909307E-5
+Time for calculating delta after computation in the loop: 28 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 28 : 32 milliseconds
+--Current Iteration: 29 delta: 4.795048161852214E-5
+Time for calculating delta after computation in the loop: 29 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 29 : 31 milliseconds
+--Current Iteration: 30 delta: 3.6149942901394464E-5
+Time for calculating delta after computation in the loop: 30 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 30 : 28 milliseconds
+--Current Iteration: 31 delta: 2.7253464092104073E-5
+Time for calculating delta after computation in the loop: 31 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 31 : 29 milliseconds
+--Current Iteration: 32 delta: 2.0546397272966378E-5
+Time for calculating delta after computation in the loop: 32 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 32 : 29 milliseconds
+--Current Iteration: 33 delta: 1.5489919189811838E-5
+Time for calculating delta after computation in the loop: 33 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 33 : 30 milliseconds
+--Current Iteration: 34 delta: 1.1677856760768778E-5
+Time for calculating delta after computation in the loop: 34 : 2 milliseconds
+Time for doing power method iteration (distributed across all nodes): 34 : 28 milliseconds
+--Current Iteration: 35 delta: 8.803942032217974E-6
+Time for calculating delta after computation in the loop: 35 : 1 milliseconds
+Time for doing power method iteration (distributed across all nodes): 35 : 29 milliseconds
+|	2		|	0.24011880508367586	|
+|	1		|	0.18204640053376794	|
+|	4		|	0.02640762786197762	|
+|	38		|	0.02544946621367781	|
+|	0		|	0.01263307973325286	|
+|	14		|	0.00872756962290755	|
+|	22		|	0.00733036583012661	|
+|	170		|	0.00499573044785292	|
+|	862		|	0.00439330130332996	|
+|	4322		|	0.00433566137898171	|
+Input file : ../Inputfile/pagerank.300000
+Output file : out_pagerank.300000
+Number of Iterations: 1000
+Threshold: 0.00001
+Total I/O time taken:4700 milliseconds
+Total Computation time taken:1851 milliseconds
