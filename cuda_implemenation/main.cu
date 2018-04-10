@@ -14,7 +14,7 @@
 using namespace std;
 
 // Variables to change
-const float EPS = 0.00001;
+const float EPS = 0.000001;
 double alpha = 0.85;
 
 void MatrixMul(double alpha, Matrix *mat, double* x, double* x_new); // returns alpha * mat * x

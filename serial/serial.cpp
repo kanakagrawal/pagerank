@@ -13,7 +13,7 @@
 using namespace std;
 
 const float EPS = 0.000001;
-double alpha = 0.8;
+double alpha = 0.85;
 
 void SerialMatrixMul(double alpha, Matrix *mat, double* x, double* x_new); // returns alpha * mat * x
 
