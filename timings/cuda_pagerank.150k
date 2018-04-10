@@ -1,0 +1,75 @@
+Time to read input:  191.7 ms 
+The elapsed time in copying to device was 2.76 ms
+
+*************************************
+Checkpoint
+Omega: 0.281248
+CPU lamda: 1.201396 
+
+Omega: 0.252638
+CPU lamda: 0.531192 
+
+Omega: 0.247166
+CPU lamda: 0.266972 
+
+Omega: 0.239595
+CPU lamda: 0.158075 
+
+Omega: 0.23777
+CPU lamda: 0.092524 
+
+Omega: 0.236809
+CPU lamda: 0.049677 
+
+Omega: 0.236548
+CPU lamda: 0.024368 
+
+Omega: 0.236514
+CPU lamda: 0.012434 
+
+Omega: 0.236271
+CPU lamda: 0.005569 
+
+Omega: 0.236188
+CPU lamda: 0.002615 
+
+Omega: 0.236175
+CPU lamda: 0.001184 
+
+Omega: 0.236184
+CPU lamda: 0.000569 
+
+Omega: 0.236185
+CPU lamda: 0.000276 
+
+Omega: 0.236179
+CPU lamda: 0.000153 
+
+Omega: 0.236178
+CPU lamda: 0.000084 
+
+Omega: 0.236178
+CPU lamda: 0.000043 
+
+Omega: 0.236178
+CPU lamda: 0.000023 
+
+Omega: 0.236178
+CPU lamda: 0.000011 
+
+Omega: 0.236178
+CPU lamda: 0.000006 
+
+*************************************
+The elapsed time in gpu was 658.82 ms
+Top 10 link IDs are: 
+ID: 4 - 0.0915811
+ID: 0 - 0.0790938
+ID: 34 - 0.0778634
+ID: 20 - 0.0435431
+ID: 2 - 0.0315849
+ID: 146 - 0.0252563
+ID: 3424 - 0.0207804
+ID: 14 - 0.0118191
+ID: 16 - 0.0108767
+ID: 6 - 0.0100965

@@ -1,0 +1,102 @@
+Time to read input:  7.5 ms 
+The elapsed time in copying to device was 0.53 ms
+
+*************************************
+Checkpoint
+Omega: 0.583858
+CPU lamda: 0.699859 
+
+Omega: 0.586754
+CPU lamda: 0.216627 
+
+Omega: 0.598075
+CPU lamda: 0.069170 
+
+Omega: 0.587983
+CPU lamda: 0.029301 
+
+Omega: 0.585999
+CPU lamda: 0.013928 
+
+Omega: 0.584529
+CPU lamda: 0.008405 
+
+Omega: 0.583403
+CPU lamda: 0.005656 
+
+Omega: 0.582615
+CPU lamda: 0.004055 
+
+Omega: 0.58205
+CPU lamda: 0.002953 
+
+Omega: 0.58162
+CPU lamda: 0.002228 
+
+Omega: 0.581292
+CPU lamda: 0.001707 
+
+Omega: 0.581042
+CPU lamda: 0.001335 
+
+Omega: 0.580845
+CPU lamda: 0.001050 
+
+Omega: 0.580693
+CPU lamda: 0.000831 
+
+Omega: 0.580573
+CPU lamda: 0.000658 
+
+Omega: 0.580479
+CPU lamda: 0.000524 
+
+Omega: 0.580405
+CPU lamda: 0.000416 
+
+Omega: 0.580347
+CPU lamda: 0.000331 
+
+Omega: 0.5803
+CPU lamda: 0.000263 
+
+Omega: 0.580264
+CPU lamda: 0.000210 
+
+Omega: 0.580234
+CPU lamda: 0.000167 
+
+Omega: 0.580212
+CPU lamda: 0.000133 
+
+Omega: 0.580193
+CPU lamda: 0.000106 
+
+Omega: 0.580179
+CPU lamda: 0.000085 
+
+Omega: 0.580167
+CPU lamda: 0.000067 
+
+Omega: 0.580158
+CPU lamda: 0.000054 
+
+Omega: 0.580151
+CPU lamda: 0.000043 
+
+Omega: 0.580145
+CPU lamda: 0.000034 
+
+*************************************
+The elapsed time in gpu was 441.96 ms
+Top 10 link IDs are: 
+ID: 6427 - 0.00447442
+ID: 1488 - 0.00446883
+ID: 4391 - 0.00430964
+ID: 2078 - 0.00428354
+ID: 66 - 0.00419832
+ID: 4823 - 0.00412053
+ID: 0 - 0.00384622
+ID: 1617 - 0.00340579
+ID: 1806 - 0.00312627
+ID: 1489 - 0.00287183

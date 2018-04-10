@@ -1,0 +1,54 @@
+Time to read input:  5.0 ms 
+*************************************
+Checkpoint
+CPU lamda: 0.699859 
+CPU lamda: 0.216627 
+CPU lamda: 0.069170 
+CPU lamda: 0.029301 
+CPU lamda: 0.013928 
+CPU lamda: 0.008405 
+CPU lamda: 0.005656 
+CPU lamda: 0.004055 
+CPU lamda: 0.002953 
+CPU lamda: 0.002228 
+CPU lamda: 0.001707 
+CPU lamda: 0.001335 
+CPU lamda: 0.001050 
+CPU lamda: 0.000831 
+CPU lamda: 0.000658 
+CPU lamda: 0.000524 
+CPU lamda: 0.000416 
+CPU lamda: 0.000331 
+CPU lamda: 0.000263 
+CPU lamda: 0.000210 
+CPU lamda: 0.000167 
+CPU lamda: 0.000133 
+CPU lamda: 0.000106 
+CPU lamda: 0.000085 
+CPU lamda: 0.000067 
+CPU lamda: 0.000054 
+CPU lamda: 0.000043 
+CPU lamda: 0.000034 
+CPU lamda: 0.000027 
+CPU lamda: 0.000022 
+CPU lamda: 0.000017 
+CPU lamda: 0.000014 
+CPU lamda: 0.000011 
+CPU lamda: 0.000009 
+CPU lamda: 0.000007 
+CPU lamda: 0.000006 
+CPU lamda: 0.000004 
+CPU lamda: 0.000004 
+*************************************
+Time for algorithm:  16.6 ms 
+Top 10 link IDs are: 
+ID: 1488 - 0.00447618
+ID: 6427 - 0.0044742
+ID: 4391 - 0.00431463
+ID: 2078 - 0.00428334
+ID: 66 - 0.00419799
+ID: 4823 - 0.00412025
+ID: 0 - 0.00384597
+ID: 1617 - 0.00340559
+ID: 1806 - 0.00312613
+ID: 1489 - 0.00287585
