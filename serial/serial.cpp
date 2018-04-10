@@ -50,8 +50,6 @@ double* RunCPUPowerMethod(Matrix* P, double* x_new)
     for(int i =0; i<P->n; i++){
         x_new[i] += omega/P->n;
     }
-
-        // PrintArray(x_new,P->n);
     lambda = 0;
     for(int i = 0; i<P->n; i++){
         lambda += abs(x[i] - x_new[i]);
@@ -91,7 +89,6 @@ int main(int argc, char** argv)
     filename = ParseArguments(argc, argv);
 
     gettimeofday(&t1, 0);
-
     Matrix temp(filename);
     gettimeofday(&t2, 0);
     
@@ -110,7 +107,7 @@ int main(int argc, char** argv)
     gettimeofday(&t2, 0);
     
     time = (1000000.0*(t2.tv_sec-t1.tv_sec) + t2.tv_usec-t1.tv_usec)/1000.0;
-    printf("Time to generate:  %3.1f ms \n", time);
+    printf("Time for algorithm:  %3.1f ms \n", time);
 
     ofstream f("output.out");    
     for(int i = 0; i < mat.n; i++)
