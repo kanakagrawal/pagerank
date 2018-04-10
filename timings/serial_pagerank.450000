@@ -1,4 +1,6 @@
-Time to read input:  1018.0 ms 
+Number of Vertices = 450000
+Number of Edges = 5351877
+Time to read input:  1037.5 ms 
 *************************************
 Checkpoint
 CPU lamda: 1.234427 
@@ -36,7 +38,7 @@ CPU lamda: 0.000004
 CPU lamda: 0.000003 
 CPU lamda: 0.000002 
 *************************************
-Time for algorithm:  1990.2 ms 
+Time for algorithm:  1971.4 ms 
 Top 10 link IDs are: 
 ID: 2 - 0.180496
 ID: 1 - 0.156435

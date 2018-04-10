@@ -1,0 +1,74 @@
+Number of Vertices = 20000000
+Number of Edges = 79999989
+Time to read input:  17426.1 ms 
+The elapsed time in copying to device was 215.81 ms
+
+*************************************
+Checkpoint
+Omega: 0.214668
+CPU lamda: 0.358402 
+
+Omega: 0.214658
+CPU lamda: 0.148171 
+
+Omega: 0.214657
+CPU lamda: 0.064642 
+
+Omega: 0.21466
+CPU lamda: 0.028777 
+
+Omega: 0.21466
+CPU lamda: 0.012925 
+
+Omega: 0.21466
+CPU lamda: 0.005835 
+
+Omega: 0.21466
+CPU lamda: 0.002642 
+
+Omega: 0.21466
+CPU lamda: 0.001198 
+
+Omega: 0.21466
+CPU lamda: 0.000544 
+
+Omega: 0.21466
+CPU lamda: 0.000247 
+
+Omega: 0.21466
+CPU lamda: 0.000112 
+
+Omega: 0.21466
+CPU lamda: 0.000051 
+
+Omega: 0.21466
+CPU lamda: 0.000023 
+
+Omega: 0.21466
+CPU lamda: 0.000011 
+
+Omega: 0.21466
+CPU lamda: 0.000005 
+
+Omega: 0.21466
+CPU lamda: 0.000002 
+
+Omega: 0.21466
+CPU lamda: 0.000001 
+
+Omega: 0.21466
+CPU lamda: 0.000000 
+
+*************************************
+The elapsed time in gpu was 42756.45 ms
+Top 10 link IDs are: 
+ID: 7.42928e+06 - 3.55957e-07
+ID: 737716 - 3.29535e-07
+ID: 42901 - 3.28641e-07
+ID: 1.50802e+07 - 3.28318e-07
+ID: 1.11496e+07 - 3.24347e-07
+ID: 1.8379e+07 - 3.2428e-07
+ID: 1.85579e+06 - 3.2273e-07
+ID: 1.19333e+07 - 3.22497e-07
+ID: 1.86772e+06 - 3.18006e-07
+ID: 1.04866e+07 - 3.16678e-07

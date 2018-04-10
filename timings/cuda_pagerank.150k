@@ -1,5 +1,7 @@
-Time to read input:  191.7 ms 
-The elapsed time in copying to device was 2.76 ms
+Number of Vertices = 150000
+Number of Edges = 796966
+Time to read input:  169.4 ms 
+The elapsed time in copying to device was 2.73 ms
 
 *************************************
 Checkpoint
@@ -60,16 +62,25 @@ CPU lamda: 0.000011
 Omega: 0.236178
 CPU lamda: 0.000006 
 
+Omega: 0.236178
+CPU lamda: 0.000003 
+
+Omega: 0.236178
+CPU lamda: 0.000002 
+
+Omega: 0.236178
+CPU lamda: 0.000001 
+
 *************************************
-The elapsed time in gpu was 658.82 ms
+The elapsed time in gpu was 706.73 ms
 Top 10 link IDs are: 
-ID: 4 - 0.0915811
-ID: 0 - 0.0790938
-ID: 34 - 0.0778634
-ID: 20 - 0.0435431
-ID: 2 - 0.0315849
-ID: 146 - 0.0252563
-ID: 3424 - 0.0207804
+ID: 4 - 0.0915814
+ID: 0 - 0.0790939
+ID: 34 - 0.0778636
+ID: 20 - 0.0435429
+ID: 2 - 0.0315848
+ID: 146 - 0.0252561
+ID: 3424 - 0.0207801
 ID: 14 - 0.0118191
 ID: 16 - 0.0108767
 ID: 6 - 0.0100965
