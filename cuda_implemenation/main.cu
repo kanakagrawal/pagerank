@@ -4,6 +4,7 @@
 #include "device_functions.h"
 #include "types.cuh"
 #include "Utilities.cuh"
+#include <sys/time.h>
 #include <string>
 #include <float.h>
 #include <iostream>
@@ -109,13 +110,34 @@ int compare_pairs (const void * a, const void * b)
 
 int main(int argc, char** argv)
 {
-    std::string filename;
-    filename = ParseArguments(argc, argv);
+    float elapsed=0;
+    cudaEvent_t start, stop;
+    struct timeval t1, t2;
+    double time;
 
+
+    std::string filename;
+
+    filename = ParseArguments(argc, argv);
+    gettimeofday(&t1, 0);
     Matrix mat(filename);
-	// mat.print();
+    gettimeofday(&t2, 0);
+    time = (1000000.0*(t2.tv_sec-t1.tv_sec) + t2.tv_usec-t1.tv_usec)/1000.0;
+    printf("Time to read input:  %3.1f ms \n", time);
+
+
+    gpuErrchk(cudaEventCreate(&start));
+    gpuErrchk(cudaEventCreate(&stop));
+    gpuErrchk( cudaEventRecord(start, 0));
     Matrix d_mat = mat.CopyToDevice();
-    
+    gpuErrchk(cudaEventRecord(stop, 0));
+    gpuErrchk(cudaEventSynchronize (stop) );
+    gpuErrchk(cudaEventElapsedTime(&elapsed, start, stop) );
+    gpuErrchk(cudaEventDestroy(start));
+    gpuErrchk(cudaEventDestroy(stop));
+    printf("The elapsed time in copying to device was %.2f ms\n", elapsed);
+
+
     double* d_x = UniformInit(d_mat.n);
 
 #ifdef FDEBUG
@@ -139,24 +161,16 @@ int main(int argc, char** argv)
     }
 #endif
 
-    float elapsed=0;
-    cudaEvent_t start, stop;
 
     gpuErrchk(cudaEventCreate(&start));
     gpuErrchk(cudaEventCreate(&stop));
-
     gpuErrchk( cudaEventRecord(start, 0));
-
     d_x = RunGPUPowerMethod(&d_mat, d_x);
-
     gpuErrchk(cudaEventRecord(stop, 0));
     gpuErrchk(cudaEventSynchronize (stop) );
-
     gpuErrchk(cudaEventElapsedTime(&elapsed, start, stop) );
-
     gpuErrchk(cudaEventDestroy(start));
     gpuErrchk(cudaEventDestroy(stop));
-
     printf("The elapsed time in gpu was %.2f ms\n", elapsed);
     
     double *x = new double[d_mat.n];

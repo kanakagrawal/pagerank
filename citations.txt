@@ -1,1 +1,3 @@
 https://devtalk.nvidia.com/default/topic/529363/cuda-programming-and-performance/how-to-measure-total-time-for-cpu-and-gpu/
+
+https://stackoverflow.com/questions/7876624/timing-cuda-operations
