@@ -17,7 +17,8 @@ using namespace std;
 const float EPS = 0.000001;
 double alpha = 0.85;
 
-void MatrixMul(double alpha, Matrix *mat, double* x, double* x_new); // returns alpha * mat * x
+void MatrixMul(double alpha, Matrix *mat, double* d_x_dense, double *d_y_dense, cusparseHandle_t handle, cusparseMatDescr_t descrA);
+// void MatrixMul(double alpha, Matrix *mat, double* x, double* x_new); // returns alpha * mat * x
 double* subtract(double* d_x,double* d_y, int n);
 double norm(double* d_x, int n);
 double* divide(double* x, double divisor, int n);
@@ -69,14 +70,22 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
     
     gpuErrchk(cudaMalloc(&x_new, n * sizeof(double)));
     //power loop
-    cublasHandle_t handle;
-    cublasSafeCall(cublasCreate(&handle));
+    cublasHandle_t blas_handle;
+    cublasSafeCall(cublasCreate(&blas_handle));
+
+    // --- Initialize cuSPARSE
+    cusparseHandle_t sparse_handle;    cusparseSafeCall(cusparseCreate(&sparse_handle));
+
+    // --- Descriptor for sparse matrix A
+    cusparseMatDescr_t descrA;      cusparseSafeCall(cusparseCreateMatDescr(&descrA));
+    cusparseSafeCall(cusparseSetMatType     (descrA, CUSPARSE_MATRIX_TYPE_GENERAL));
+    cusparseSafeCall(cusparseSetMatIndexBase(descrA, CUSPARSE_INDEX_BASE_ZERO));
 
     cout << "Checkpoint" << endl;
     while(abs(lambda - oldLambda) > EPS)
     {
         oldLambda = lambda;
-        MatrixMul(alpha, P, x, x_new);
+        MatrixMul(alpha, P, x, x_new, sparse_handle, descrA);
 
         x_norm = norm(x, n);
         x_new_norm = norm(x_new, n);
@@ -88,7 +97,7 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
         //   thrust::for_each(d_th_x_new, d_th_x_new + n, add_functor( omega / ( (double) n ) ));
         
         const double mult = omega / ( (double) n );
-        cublasSafeCall(cublasDaxpy(handle, n,&mult, d_ones, 1, x_new, 1));
+        cublasSafeCall(cublasDaxpy(blas_handle, n,&mult, d_ones, 1, x_new, 1));
         gpuErrchk(cudaDeviceSynchronize());
 
         temp = subtract(x, x_new, n);
