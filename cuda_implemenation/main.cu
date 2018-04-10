@@ -58,29 +58,29 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
     gpuErrchk(cudaMalloc(&x_new, P->n * sizeof(double)));
     //power loop
     cout << "Checkpoint" << endl;
-	while(abs(lambda - oldLambda) > EPS)
-	{
-		oldLambda = lambda;
-        MatrixMul(alpha, P, x, x_new);
+    while(abs(lambda - oldLambda) > EPS)
+    {
+      oldLambda = lambda;
+      MatrixMul(alpha, P, x, x_new);
 
-        x_norm = norm(x, P->n);
-        x_new_norm = norm(x_new, P->n);
-        omega = x_norm - x_new_norm;
+      x_norm = norm(x, P->n);
+      x_new_norm = norm(x_new, P->n);
+      omega = x_norm - x_new_norm;
 
-        cout << "Omega: " << omega << endl;
+      cout << "Omega: " << omega << endl;
 
-        thrust::device_ptr<double> d_th_x_new(x_new);
-        thrust::for_each(d_th_x_new, d_th_x_new + P->n, add_functor( omega / ( (double) P->n ) ));
-        
-		temp = subtract(x, x_new, P->n);
-		lambda = norm(temp, P->n);
-        printf("CPU lamda: %f \n", lambda);
-        cout << endl;
-		x = x_new;
-		x_new = temp;
-	}
-    printf("*************************************\n");
-	return x;
+      thrust::device_ptr<double> d_th_x_new(x_new);
+      thrust::for_each(d_th_x_new, d_th_x_new + P->n, add_functor( omega / ( (double) P->n ) ));
+
+      temp = subtract(x, x_new, P->n);
+      lambda = norm(temp, P->n);
+      printf("CPU lamda: %f \n", lambda);
+      cout << endl;
+      x = x_new;
+      x_new = temp;
+  }
+  printf("*************************************\n");
+  return x;
 }
 
 double* UniformInit(int n) {
@@ -131,7 +131,7 @@ int main(int argc, char** argv)
         cout << temp.p[i] << " " << temp.row_ind[i] << " " << temp.col_ind[i] << endl; 
         cout << mat.p[i] << " " << mat.row_ind[i] << " " << mat.col_ind[i] << endl; 
     }
-        
+
     cout << "# End 10 Elems" << endl;
     for (int i = 0; i < 10; i++){
         cout << temp.p[temp.nnz - i] << " " << temp.row_ind[temp.nnz - i] << " " << temp.col_ind[temp.n - i] << endl; 
@@ -139,7 +139,25 @@ int main(int argc, char** argv)
     }
 #endif
 
+    float elapsed=0;
+    cudaEvent_t start, stop;
+
+    gpuErrchk(cudaEventCreate(&start));
+    gpuErrchk(cudaEventCreate(&stop));
+
+    gpuErrchk( cudaEventRecord(start, 0));
+
     d_x = RunGPUPowerMethod(&d_mat, d_x);
+
+    gpuErrchk(cudaEventRecord(stop, 0));
+    gpuErrchk(cudaEventSynchronize (stop) );
+
+    gpuErrchk(cudaEventElapsedTime(&elapsed, start, stop) );
+
+    gpuErrchk(cudaEventDestroy(start));
+    gpuErrchk(cudaEventDestroy(stop));
+
+    printf("The elapsed time in gpu was %.2f ms\n", elapsed);
     
     double *x = new double[d_mat.n];
     gpuErrchk(cudaMemcpy(x, d_x, d_mat.n * sizeof(double), cudaMemcpyDeviceToHost));
