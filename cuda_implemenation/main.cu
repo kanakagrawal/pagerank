@@ -55,32 +55,51 @@ double* RunGPUPowerMethod(Matrix* P, double* x_new)
     double* temp;
     double x_norm, x_new_norm;
     double omega;
-    gpuErrchk(cudaMalloc(&x_new, P->n * sizeof(double)));
+    int n = P->n;
+        
+    double *h_ones = new double[n]; 
+    double *d_ones;
+    for (int i = 0; i < n;i++) {
+        h_ones[i] = 1.0;
+    }
+
+    gpuErrchk(cudaMalloc(&d_ones, n * sizeof(double)));
+    gpuErrchk(cudaMemcpy(d_ones, h_ones, n * sizeof(double), cudaMemcpyHostToDevice));
+
+    
+    gpuErrchk(cudaMalloc(&x_new, n * sizeof(double)));
     //power loop
+    cublasHandle_t handle;
+    cublasSafeCall(cublasCreate(&handle));
+
     cout << "Checkpoint" << endl;
     while(abs(lambda - oldLambda) > EPS)
     {
-      oldLambda = lambda;
-      MatrixMul(alpha, P, x, x_new);
+        oldLambda = lambda;
+        MatrixMul(alpha, P, x, x_new);
 
-      x_norm = norm(x, P->n);
-      x_new_norm = norm(x_new, P->n);
-      omega = x_norm - x_new_norm;
+        x_norm = norm(x, n);
+        x_new_norm = norm(x_new, n);
+        omega = x_norm - x_new_norm;
 
-      cout << "Omega: " << omega << endl;
+        cout << "Omega: " << omega << endl;
 
-      thrust::device_ptr<double> d_th_x_new(x_new);
-      thrust::for_each(d_th_x_new, d_th_x_new + P->n, add_functor( omega / ( (double) P->n ) ));
+        //   thrust::device_ptr<double> d_th_x_new(x_new);
+        //   thrust::for_each(d_th_x_new, d_th_x_new + n, add_functor( omega / ( (double) n ) ));
+        
+        const double mult = omega / ( (double) n );
+        cublasSafeCall(cublasDaxpy(handle, n,&mult, d_ones, 1, x_new, 1));
+        gpuErrchk(cudaDeviceSynchronize());
 
-      temp = subtract(x, x_new, P->n);
-      lambda = norm(temp, P->n);
-      printf("CPU lamda: %f \n", lambda);
-      cout << endl;
-      x = x_new;
-      x_new = temp;
-  }
-  printf("*************************************\n");
-  return x;
+        temp = subtract(x, x_new, n);
+        lambda = norm(temp, n);
+        printf("CPU lamda: %f \n", lambda);
+        cout << endl;
+        x = x_new;
+        x_new = temp;
+    }
+    printf("*************************************\n");
+    return x;
 }
 
 double* UniformInit(int n) {
