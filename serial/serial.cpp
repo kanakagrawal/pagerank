@@ -85,23 +85,31 @@ int compare_pairs (const void * a, const void * b)
 
 int main(int argc, char** argv)
 {
+    struct timeval t1, t2;
+    double time;
     std::string filename;
     filename = ParseArguments(argc, argv);
 
+    gettimeofday(&t1, 0);
+
     Matrix temp(filename);
+    gettimeofday(&t2, 0);
+    
+    time = (1000000.0*(t2.tv_sec-t1.tv_sec) + t2.tv_usec-t1.tv_usec)/1000.0;
+    printf("Time to read input:  %3.1f ms \n", time);
+
     Matrix mat = *(temp.transpose());
     double* x = UniformInit(mat.n);
 #ifdef FDEBUG
     mat.print();
 #endif
     
-    struct timeval t1, t2;
     
     gettimeofday(&t1, 0);
     x = RunCPUPowerMethod(&mat, x);
     gettimeofday(&t2, 0);
     
-    double time = (1000000.0*(t2.tv_sec-t1.tv_sec) + t2.tv_usec-t1.tv_usec)/1000.0;
+    time = (1000000.0*(t2.tv_sec-t1.tv_sec) + t2.tv_usec-t1.tv_usec)/1000.0;
     printf("Time to generate:  %3.1f ms \n", time);
 
     ofstream f("output.out");    
